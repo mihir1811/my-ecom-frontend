@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --text-color: #333;
+  --bg-color: #fff;
+  --accent-color: #007bff;
+}
+
+.dark-theme {
+  --text-color: #fff;
+  --bg-color: #333;
+}
