@@ -43,11 +43,10 @@ const SignInPage = () => {
               <a href="#" className="social-icon">
                 <FaFacebookF />
               </a>
-        
+
               <a href="#" className="social-icon">
                 <FaGoogle />
               </a>
-          
             </div>
           </form>
           <form action="#" className="sign-up-form">
@@ -80,15 +79,10 @@ const SignInPage = () => {
               <a href="#" className="social-icon">
                 <FaFacebookF />
               </a>
-              {/* <a href="#" className="social-icon">
-                <i className="fab fa-twitter"></i>
-              </a> */}
+
               <a href="#" className="social-icon">
                 <FaGoogle />
               </a>
-              {/* <a href="#" className="social-icon">
-                <i className="fab fa-linkedin-in"></i>
-              </a> */}
             </div>
           </form>
         </div>

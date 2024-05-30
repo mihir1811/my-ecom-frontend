@@ -14,6 +14,7 @@ export const data = {
     },
     products: [
         {
+            StockNumber:3630449327,
             productName: "",
             description: "",
             productImgs: [],
@@ -36,7 +37,8 @@ export const data = {
             depth: "",
             table: "",
             polish: "",
-            symmetry: ""
+            symmetry: "",
+            certificateDocumentImg:""
         }
     ],
 }

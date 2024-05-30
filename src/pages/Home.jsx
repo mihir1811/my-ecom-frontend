@@ -2,14 +2,22 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Footer2 from "../components/footer2";
+import Header2 from "../components/Header2";
+import ProductCarousel from "../components/ProductCarousel";
+import DiamondFilters from "../components/DiamondFilters";
 
 const Home = () => {
   return (
     <>
-      <Header />
-      <div className="py-5">Home carousel section</div>
-      <div className="py-5">featured products</div>
-      <div className="py-5">new Collection</div>
+      <Header2 />
+      <section className="bg-[#dddddd]">
+        <ProductCarousel />
+      </section>
+
+      <section className="bg-[#dddddd] pt-10 px-[20px]">
+       <DiamondFilters />
+      </section>
+
       <Footer2 />
     </>
   );

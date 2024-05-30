@@ -2,6 +2,26 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+/* @font-face {
+   font-family: 'Roxie Rossa';
+  src: url("./fonts//Roxie-Rossa-font_Toni-Studio_061222/Roxie\ rossa.ttf");
+} */
+
+@font-face {
+  font-family: "Roxie Rossa";
+  src: url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.eot");
+  src: url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.svg#Roxie Rossa")format("svg");
+}
+
+.font-rossa{
+  font-family: "Roxie Rossa";
+}
+
 :root {
   --text-color: #333;
   --bg-color: #fff;
@@ -11,4 +31,42 @@
 .dark-theme {
   --text-color: #fff;
   --bg-color: #333;
+}
+
+
+/* .slick_slide_content img {
+  border-radius: 16px;
+  height: 408px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.slick-center + .slick-slide {
+  margin-top: 40px;
+}
+.slick-center + .slick-slide + .slick-slide {
+  margin-top: 80px;
+}
+
+.slick-slide:has(+ .slick-center) {
+  margin-top: 40px;
+}
+
+.slick-slide:has(+ * + .slick-center) {
+  margin-top: 80px;
+}
+.slick-slide:has(+ * + * + .slick-center) {
+  margin-top: 120px;
+}
+
+.slick-center {
+  margin-top: 0px;
+}
+
+.slick-slide {
+  transition: margin 0.5s; 
+} */
+
+.slick-slide {
+  padding: 0 10px;
 }
