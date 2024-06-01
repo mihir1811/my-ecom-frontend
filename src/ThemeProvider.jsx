@@ -16,7 +16,9 @@ const ThemeProvider = ({ children }) => {
     localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
   };
 
-  return <>{children}</>;
+  return <div>
+    {children}
+    </div>;
 };
 
 export default ThemeProvider;

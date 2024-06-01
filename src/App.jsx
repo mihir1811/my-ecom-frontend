@@ -28,8 +28,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/seller/dashboard" element={<ProtectedRoute allowedRoles={['seller']} user={currentUser}><h1>seller dashboard</h1></ProtectedRoute>} />
-            <Route path="/signin" element={<SignInPage />} />
-            <Route path="/signup" element={<h1>Sign up</h1>} />
+            <Route path="/sign-in" element={<SignInPage />} />
+            {/* <Route path="/signup" element={<h1>Sign up</h1>} /> */}
             <Route path="/about" element={<About />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/products" element={<Products />} />

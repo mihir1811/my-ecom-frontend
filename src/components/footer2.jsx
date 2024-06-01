@@ -1,4 +1,5 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const Footer2 = () => {
   return (
@@ -11,11 +12,14 @@ const Footer2 = () => {
                 <p className="text-sm mt-6 text-gray-500">Subscribe to our newsletter and stay up to date with the latest news,
                 updates, and exclusive offers. Get valuable insights. Join our community today!</p>
 
-                <div className="bg-[#f2eded] flex px-2 py-1.5 rounded-full text-left mt-10">
+                <motion.div  whileHover={{ scale: 1 }}
+                whileTap={{ scale: 0.9 }}  className="bg-[#f2eded] flex px-2 py-1.5 rounded-full text-left mt-10">
                 <input type='email' placeholder='Enter your email' className="w-full outline-none bg-transparent text-sm pl-4" />
-                <button type='button'
-                    className="bg-gray-600 hover:bg-gray-700 text-white text-sm rounded-full px-5 py-2.5 ml-4 transition-all font-semibold">Subscribe</button>
-                </div>
+                <motion.button type='button'
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                    className="bg-gray-600 hover:bg-gray-700 text-white text-sm rounded-full px-5 py-2.5 ml-4 transition-all font-semibold">Subscribe</motion.button>
+                </motion.div>
             </div>
 
             <hr className="border-gray-300 my-12" />

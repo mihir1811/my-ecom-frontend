@@ -7,13 +7,13 @@ const DiamondFilters = () => {
   return (
     <div className="mx-auto max-w-[1320px] bg-white rounded-[30px] p-10">
       <div className="grid grid-cols-3 gap-10">
-        <div class="relative mb-6">
+        <div className="relative mb-6">
           <div>
             <h3 className="font-rossa text-[24px]">Price</h3>
           </div>
 
-          <div class="relative mb-6">
-            <label for="price-range-input" class="sr-only">
+          <div className="relative mb-6">
+            <label htmlFor="price-range-input" className="sr-only">
               Labels range
             </label>
             <input
@@ -23,18 +23,18 @@ const DiamondFilters = () => {
               value={priceValue}
               min="100"
               max="1500"
-              class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
             />
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
               Min ($100)
             </span>
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
               $500
             </span>
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">
               $1000
             </span>
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
               Max ($1500)
             </span>
           </div>
@@ -58,13 +58,13 @@ const DiamondFilters = () => {
             </div>
           </div>
         </div>
-        <div class="relative mb-6">
+        <div className="relative mb-6">
           <div>
             <h3 className="font-rossa text-[24px]">Caret</h3>
           </div>
 
-          <div class="relative mb-6">
-            <label for="price-range-input" class="sr-only">
+          <div className="relative mb-6">
+            <label htmlFor="price-range-input" className="sr-only">
               Labels range
             </label>
             <input
@@ -74,13 +74,13 @@ const DiamondFilters = () => {
               value={weightValue}
               min="100"
               max="1500"
-              class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
             />
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
               0.0ct
             </span>
 
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
               1ct
             </span>
           </div>
@@ -104,13 +104,13 @@ const DiamondFilters = () => {
             </div>
           </div>
         </div>
-        <div class="relative mb-6">
+        <div className="relative mb-6">
           <div>
             <h3 className="font-rossa text-[24px]">Colour</h3>
           </div>
 
-          <div class="relative mb-6">
-            <label for="price-range-input" class="sr-only">
+          <div className="relative mb-6">
+            <label htmlFor="price-range-input" className="sr-only">
               Labels range
             </label>
             <input
@@ -120,13 +120,13 @@ const DiamondFilters = () => {
               value={colorValue}
               min="100"
               max="1500"
-              class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
             />
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">
                 D
             </span>
 
-            <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
+            <span className="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">
               M
             </span>
           </div>

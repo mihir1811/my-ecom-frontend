@@ -12,7 +12,7 @@ const diamondShapes = [
   },
   {
     title: "Pear",
-    img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Round.jpg",
+    img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Pear.jpg",
   },
   {
     title: "Emerald",
@@ -65,10 +65,10 @@ const ProductCarousel = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
+    slidesToShow: 7 ,
     slidesToScroll: 1,
     className: "myCustomCarousel",
-    // centerMode: true,
+    centerMode: true,
     // arrows:false,
     // swipeToSlide: true,
     // focusOnSelect: true,
