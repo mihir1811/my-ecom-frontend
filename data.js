@@ -4,7 +4,7 @@ export const data = {
         lastName: "stark",
         email: "stark12@gmail.com",
         phone: "1234567890", // now country code is not mendatory
-        address: {
+        billingAddress: {
             city: "surat",
             country: "india",
             state: "gujarat",
@@ -40,5 +40,12 @@ export const data = {
             symmetry: "",
             certificateDocumentImg:""
         }
-    ]
+    ] ,
+    storeDetails:{
+        storeId:"fghhdsbdgfd",
+        userId: "user_id",
+        storeName:"gemstones",
+        totalProducts:10,
+        isVerified:true,
+    }
 }
