@@ -12,9 +12,9 @@ const Header2 = () => {
                 </ul>
             </div> */}
             <h1 className='font-bold text-3xl'>LOGO</h1>
-            <div className='flex items-center w-[300px]'>
+            <div className='flex items-center'>
                 <a className='cursor-pointer' href='/sign-in'>login</a>
-                <button className='bg-[#5877C7] rounded-[33px] font-semibold px-10 py-2 text-white mx-8'>sign up</button>
+                <button className='bg-[#5877C7] rounded-[33px] font-semibold px-5 py-2 text-white mx-5 text-nowrap'>Become a seller</button>
                 <div>
                     <img src={cartIcon} />
                 </div>
