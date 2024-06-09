@@ -48,13 +48,13 @@ const Header = () => {
                 src={userData?.profilePic}
               />
             ) : (
-              <PiUserCircle  className="mr-3 cursor-pointer" size={30} />
+              <PiUserCircle className="mr-3 cursor-pointer" size={30} />
             )}
             <motion.div
               className="relative cursor-pointer"
               onClick={() => setIsCartOpen(true)}
               whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.9 }}
             >
               <IoCartOutline size={30} />
               <span className="flex justify-center items-center h-[20px] w-[20px] absolute top-[-7px] right-[-7px] bg-blue-400 rounded-full">
@@ -81,11 +81,17 @@ const Header = () => {
               Laundry Wash - Signature Scent (50 loads)
             </p>
             <div>
-              <p className="mt-3"><span>$1000</span>  <del className="opacity-50">$1200</del></p>
+              <p className="mt-3">
+                <span>$1000</span> <del className="opacity-50">$1200</del>
+              </p>
               <div className="border border-[#ddd] flex items-center rounded-full h-[30px] w-[100px]">
-                <div className="w-full text-center bg-[#ddd] leading-[30px] rounded-s-full h-[30px]">+</div>
+                <div className="w-full text-center bg-[#ddd] leading-[30px] rounded-s-full h-[30px]">
+                  +
+                </div>
                 <div className="w-full text-center bg-white">1</div>
-                <div className="w-full text-center bg-[#ddd] leading-[30px] rounded-e-full h-[30px]">-</div>
+                <div className="w-full text-center bg-[#ddd] leading-[30px] rounded-e-full h-[30px]">
+                  -
+                </div>
               </div>
             </div>
           </div>

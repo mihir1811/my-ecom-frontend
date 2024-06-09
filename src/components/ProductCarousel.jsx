@@ -54,18 +54,18 @@ const ProductCarousel = () => {
     return (
       <div
         className={className}
-        style={{ ...style, display: "block"}}
+        style={{ ...style, display: "block" }}
         onClick={onClick}
       >
         <img src={ArrowPrev} height={30} />
-        </div>
+      </div>
     );
   }
 
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 7 ,
+    slidesToShow: 7,
     slidesToScroll: 1,
     className: "myCustomCarousel",
     centerMode: true,
@@ -74,35 +74,37 @@ const ProductCarousel = () => {
     // focusOnSelect: true,
     draggable: true,
     // dots:true
-    responsive:[
+    responsive: [
       {
         breakpoint: 1024,
         settings: {
-            slidesToShow: 5,
-            slidesToScroll: 5,
-        }
-    },
-    {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+        },
+      },
+      {
         breakpoint: 600,
         settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
-        }
-    },
-    {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
         breakpoint: 480,
         settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-        }
-    }
-    ]
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
   return (
     <>
       <div className="relative">
         <div className="flex justify-between mx-auto max-w-[1420px] px-[20px]">
-          <div style={{ fontFamily: "Roxie Rossa" , fontSize:"30px" }}>Diamonds</div>
+          <div style={{ fontFamily: "Roxie Rossa", fontSize: "30px" }}>
+            Diamonds
+          </div>
         </div>
         <Slider
           {...settings}
@@ -140,13 +142,13 @@ const ProductCarousel = () => {
             right: 9% !important;
             z-index: 1;
             top: -18px;
-            left:unset
+            left: unset;
           }
           .slick-prev:before {
-            content:""
+            content: "";
           }
           .slick-next:before {
-            content:""
+            content: "";
           }
           .slick-next {
             right: 5% !important;
@@ -154,8 +156,8 @@ const ProductCarousel = () => {
             top: -18px;
           }
 
-          .slick-track{
-            padding-top:20px;
+          .slick-track {
+            padding-top: 20px;
           }
         `}
       </style>

@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <div className="bg-[#ddd]">
       <Header />
-{/* 
+      {/* 
       <div class="mx-auto">
         <div class="flex flex-wrap mb-4" id="search">
           <form
@@ -85,9 +85,7 @@ const Products = () => {
             </h3>
           </div>
           <div className="w-full ps-5">
-            <div className="bg-white h-full rounded-[10px] w-full p-3">
-
-            </div>
+            <div className="bg-white h-full rounded-[10px] w-full p-3"></div>
           </div>
         </div>
       </div>

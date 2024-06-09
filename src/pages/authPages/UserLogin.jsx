@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useForm  } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import { API_URL } from "../../../config";
 import { Link } from "react-router-dom";
@@ -18,7 +18,7 @@ const UserLogin = () => {
   const handleLogin = async (data) => {
     console.log(data);
     try {
-      const res = await axios.post(`${API_URL}/auth/login` , data);
+      const res = await axios.post(`${API_URL}/auth/login`, data);
       console.log(res);
     } catch (error) {
       console.log(error);

@@ -49,7 +49,10 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact-us" element={<Contact />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/terms-and-conditions" element={<h1>terms page</h1>} />
+              <Route
+                path="/terms-and-conditions"
+                element={<h1>terms page</h1>}
+              />
               <Route path="*" element={<PageNotFound />} />
               {/* This line should be at the end */}
             </Routes>

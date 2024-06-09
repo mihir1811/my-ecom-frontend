@@ -5,7 +5,12 @@ import { API_URL } from "../../../config";
 import { Link } from "react-router-dom";
 
 const UserSignup = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       email: "",
       password: "",
@@ -162,4 +167,4 @@ const UserSignup = () => {
   );
 };
 
-export default UserSignup;  
+export default UserSignup;

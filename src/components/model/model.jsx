@@ -24,7 +24,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    zIndex:1
+    zIndex: 1,
   },
   modal: {
     backgroundColor: "white",
@@ -32,7 +32,7 @@ const styles = {
     borderRadius: "8px",
     position: "relative",
     width: "80%",
-    maxWidth: "500px"
+    maxWidth: "500px",
   },
   closeButton: {
     position: "absolute",
@@ -41,8 +41,8 @@ const styles = {
     background: "transparent",
     border: "none",
     fontSize: "18px",
-    cursor: "pointer"
-  }
+    cursor: "pointer",
+  },
 };
 
 export default Model;

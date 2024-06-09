@@ -47,7 +47,7 @@ const SignInPage = () => {
               <a href="#" className="social-icon">
                 <FaGoogle />
               </a>
-            </div>  
+            </div>
           </form>
           <form action="#" className="sign-up-form">
             <h2 className="title">Sign up</h2>

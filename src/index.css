@@ -1,7 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* @font-face {
    font-family: 'Roxie Rossa';
@@ -11,14 +10,20 @@
 @font-face {
   font-family: "Roxie Rossa";
   src: url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.eot");
-  src: url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.eot?#iefix")format("embedded-opentype"),
-  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.woff2")format("woff2"),
-  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.woff")format("woff"),
-  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.ttf")format("truetype"),
-  url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.svg#Roxie Rossa")format("svg");
+  src:
+    url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.svg#Roxie Rossa")
+      format("svg");
 }
 
-.font-rossa{
+.font-rossa {
   font-family: "Roxie Rossa";
 }
 
@@ -32,7 +37,6 @@
   --text-color: #fff;
   --bg-color: #333;
 }
-
 
 /* .slick_slide_content img {
   border-radius: 16px;

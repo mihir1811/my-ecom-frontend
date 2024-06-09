@@ -1,84 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function HomePage2() {
   const [data, setData] = useState([
     {
-      make: 'Gibson',
-      model: 'Les Paul',
-      type: 'Electric',
-      price: '$3,000',
-      image: 'http://www.sweetwater.com/images/items/120/LPST5HTHDCH-medium.jpg?9782bd'
+      make: "Gibson",
+      model: "Les Paul",
+      type: "Electric",
+      price: "$3,000",
+      image:
+        "http://www.sweetwater.com/images/items/120/LPST5HTHDCH-medium.jpg?9782bd",
     },
     {
-      make: 'Gibson',
-      model: 'SG',
-      type: 'Electric',
-      price: '$1,500',
-      image: 'http://www.sweetwater.com/images/items/120/SGSEBCH-medium.jpg?e69cfe'
+      make: "Gibson",
+      model: "SG",
+      type: "Electric",
+      price: "$1,500",
+      image:
+        "http://www.sweetwater.com/images/items/120/SGSEBCH-medium.jpg?e69cfe",
     },
     {
-      make: 'Fender',
-      model: 'Telecaster',
-      type: 'Electric',
-      price: '$2,000',
-      image: 'http://www.sweetwater.com/images/items/120/TelePLMPHB-medium.jpg?28e48b'
+      make: "Fender",
+      model: "Telecaster",
+      type: "Electric",
+      price: "$2,000",
+      image:
+        "http://www.sweetwater.com/images/items/120/TelePLMPHB-medium.jpg?28e48b",
     },
     {
-      make: 'Fender',
-      model: 'Stratocaster',
-      type: 'Electric',
-      price: '$2,000',
-      image: 'http://www.sweetwater.com/images/items/120/StratAMM3SB2-medium.jpg?dfd0a9'
+      make: "Fender",
+      model: "Stratocaster",
+      type: "Electric",
+      price: "$2,000",
+      image:
+        "http://www.sweetwater.com/images/items/120/StratAMM3SB2-medium.jpg?dfd0a9",
     },
     {
-      make: 'Gretsch',
-      model: 'White Falcon',
-      type: 'Electric',
-      price: '$5,000',
-      image: 'http://www.sweetwater.com/images/items/120/G613655GE-medium.jpg?9bfb0e'
+      make: "Gretsch",
+      model: "White Falcon",
+      type: "Electric",
+      price: "$5,000",
+      image:
+        "http://www.sweetwater.com/images/items/120/G613655GE-medium.jpg?9bfb0e",
     },
     {
-      make: 'Paul Reed Smith',
-      model: 'Custom 24',
-      type: 'Electric',
-      price: '$5,000',
-      image: 'http://www.sweetwater.com/images/items/120/HBII10BGWB-medium.jpg?982763'
+      make: "Paul Reed Smith",
+      model: "Custom 24",
+      type: "Electric",
+      price: "$5,000",
+      image:
+        "http://www.sweetwater.com/images/items/120/HBII10BGWB-medium.jpg?982763",
     },
     {
-      make: 'Gibson',
-      model: 'Hummingbird',
-      type: 'Acoustic',
-      price: '$2,500',
-      image: 'http://www.sweetwater.com/images/items/120/SSHBHCNP-medium.jpg?11fbea'
-    }
+      make: "Gibson",
+      model: "Hummingbird",
+      type: "Acoustic",
+      price: "$2,500",
+      image:
+        "http://www.sweetwater.com/images/items/120/SSHBHCNP-medium.jpg?11fbea",
+    },
   ]);
 
   const [filters, setFilters] = useState({});
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const makes = [...new Set(data.map(item => item.make))];
-    console.log(makes ,"efewfer")
-    const models = [...new Set(data.map(item => item.model))];
-    const types = [...new Set(data.map(item => item.type))];
-
-
+    const makes = [...new Set(data.map((item) => item.make))];
+    console.log(makes, "efewfer");
+    const models = [...new Set(data.map((item) => item.model))];
+    const types = [...new Set(data.map((item) => item.type))];
 
     setFilters({
       make: makes,
       model: models,
-      type: types
+      type: types,
     });
   }, [data]);
 
   const handleFilterChange = (filterName, filterVal) => {
-    if (filterVal === '') {
+    if (filterVal === "") {
       delete filters[filterName];
     } else {
       filters[filterName] = filterVal;
     }
 
-    console.log(filters ,"adefbergver")
+    console.log(filters, "adefbergver");
 
     setFilters({ ...filters });
   };
@@ -88,17 +93,21 @@ function HomePage2() {
     const query = searchQuery.toLowerCase();
 
     setData(
-      data.filter(item => {
+      data.filter((item) => {
         const make = item.make.toLowerCase();
         const model = item.model.toLowerCase();
         const type = item.type.toLowerCase();
 
-        return make.indexOf(query) > -1 || model.indexOf(query) > -1 || type.indexOf(query) > -1;
-      })
+        return (
+          make.indexOf(query) > -1 ||
+          model.indexOf(query) > -1 ||
+          type.indexOf(query) > -1
+        );
+      }),
     );
   };
 
-  console.log(data ,"eveevv")
+  console.log(data, "eveevv");
 
   return (
     <div class="mx-auto p-4">
@@ -163,21 +172,30 @@ function HomePage2() {
                 class="block w-full pl-10 text-sm text-gray-700"
                 onChange={(e) => handleFilterChange("type", e.target.value)}
               >
-                <option value={`${typeof filters?.type== "string" ? filters?.type : "select type"}`}>
-                  {typeof filters?.type== "string" ? filters?.type : "select type"}
+                <option
+                  value={`${typeof filters?.type == "string" ? filters?.type : "select type"}`}
+                >
+                  {typeof filters?.type == "string"
+                    ? filters?.type
+                    : "select type"}
                 </option>
 
-                {console.log(filters, "Aerffds" ,typeof filters?.type== "string")}
-
-                {typeof filters?.type== "string" || filters?.type?.length >0 && (
-                  <>
-                    {filters?.type?.map((type, index) => (
-                      <option key={index} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </>
+                {console.log(
+                  filters,
+                  "Aerffds",
+                  typeof filters?.type == "string",
                 )}
+
+                {typeof filters?.type == "string" ||
+                  (filters?.type?.length > 0 && (
+                    <>
+                      {filters?.type?.map((type, index) => (
+                        <option key={index} value={type}>
+                          {type}
+                        </option>
+                      ))}
+                    </>
+                  ))}
               </select>
             </div>
           </div>

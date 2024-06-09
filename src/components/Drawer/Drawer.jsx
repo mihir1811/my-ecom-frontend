@@ -3,8 +3,6 @@ import { motion, useAnimation } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 
 const Drawer = ({ anchor = "right", open, onClose, children }) => {
-
-
   const controls = useAnimation();
   const sidebarRef = useRef(null);
 
@@ -31,7 +29,10 @@ const Drawer = ({ anchor = "right", open, onClose, children }) => {
       {/* Full-page overlay */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: open ? 0.5 : 0, pointerEvents: open ? "auto" : "none" }}
+        animate={{
+          opacity: open ? 0.5 : 0,
+          pointerEvents: open ? "auto" : "none",
+        }}
         transition={{ duration: 0.3 }}
         className="overlay"
         onClick={handleOverlayClick}
@@ -50,12 +51,12 @@ const Drawer = ({ anchor = "right", open, onClose, children }) => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          style={{  padding: "10px" }}
+          style={{ padding: "10px" }}
         >
           <IoClose size={30} onClick={onClose} color="#222" />
         </motion.button>
 
-        <div style={{borderTop:"1px solid #ddd"}}></div>
+        <div style={{ borderTop: "1px solid #ddd" }}></div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
