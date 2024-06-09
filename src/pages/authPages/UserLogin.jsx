@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm  } from "react-hook-form";
+import axios from "axios";
+import { API_URL } from "../../../config";
+import { Link } from "react-router-dom";
 
 const UserLogin = () => {
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const [mobileNumber, setMobileNumber] = useState("");
   const [isPhoneLogin, setIsPhoneLogin] = useState(false);
 
   const { register, handleSubmit, reset } = useForm({
@@ -15,10 +15,15 @@ const UserLogin = () => {
     },
   });
 
-  const handleLogin = (data)=>{
-    console.log(data)
-  }
-
+  const handleLogin = async (data) => {
+    console.log(data);
+    try {
+      const res = await axios.post(`${API_URL}/auth/login` , data);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     // Reset form fields when switching between phone and email login
@@ -51,7 +56,7 @@ const UserLogin = () => {
               className="space-y-4 md:space-y-6"
               action="#"
               onSubmit={handleSubmit((data) => {
-                handleLogin(data)
+                handleLogin(data);
               })}
             >
               {isPhoneLogin ? (
@@ -65,9 +70,7 @@ const UserLogin = () => {
                   <input
                     type="number"
                     name="email"
-                    // value={mobileNumber}
                     {...register("phoneNumber")}
-                    // onChange={(e) => setMobileNumber(e.target.value)}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="9988009900"
                     required={true}
@@ -134,7 +137,7 @@ const UserLogin = () => {
                   <p
                     href="#"
                     onClick={() => setIsPhoneLogin(!isPhoneLogin)}
-                    className="text-sm cursor-pointer font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    className="text-sm cursor-pointer font-medium text-primary-600 hover:underline dark:text-slate-400"
                   >
                     login with email
                   </p>
@@ -142,34 +145,33 @@ const UserLogin = () => {
                   <p
                     href="#"
                     onClick={() => setIsPhoneLogin(!isPhoneLogin)}
-                    className="text-sm cursor-pointer font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    className="text-sm cursor-pointer font-medium text-primary-600 hover:underline dark:text-slate-400"
                   >
                     login with mobile
                   </p>
                 )}
 
-                <a
+                <Link
                   href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                  className="text-sm  font-medium text-primary-600 hover:underline dark:text-slate-400"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
               <button
                 type="submit"
-                // disabled={!watchFields.email || !watchFields.phoneNumber}
                 className="w-full disabled:bg-[#222] text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-yellow-50 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 "
               >
                 Sign in
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don't have an account yet?
-                <a
-                  href="#"
+                <Link
+                  to="/register"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Sign up
-                </a>
+                </Link>
               </p>
             </form>
           </div>

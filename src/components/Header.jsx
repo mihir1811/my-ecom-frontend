@@ -10,7 +10,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const userData = useSelector((data) => data.userData);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  console.log(userData, "AErhhjstjty");
 
   return (
     <>
