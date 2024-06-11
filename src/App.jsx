@@ -17,17 +17,21 @@ import Products from "./pages/userPages/Products";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
 import { Toaster } from "react-hot-toast";
 
-
 function App() {
-
-
   return (
     <>
       <Provider store={store}>
         <ThemeProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<UserRoutes><Homepage1 /></UserRoutes>} />
+              <Route
+                path="/"
+                element={
+                  <UserRoutes>
+                    <Homepage1 />
+                  </UserRoutes>
+                }
+              />
               <Route path="/login" element={<UserLogin />} />
               <Route path="/register" element={<UserSignup />} />
               <Route
@@ -41,32 +45,40 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/cart" element={<h1>cart</h1>} />
               <Route path="/checkout" element={<h1>checkout</h1>} />
-              <Route path="/products" element={<Products   />} />
+              <Route path="/products" element={<Products />} />
               <Route path="/contact-us" element={<Contact />} />
               <Route
                 path="/terms-and-conditions"
                 element={<h1>terms page</h1>}
               />
               {/* seller routes  */}
-              <Route
-                path="/seller/register"
-                element={<SellerSignup />}
-              />
+              <Route path="/seller/register" element={<SellerSignup />} />
               <Route path="/seller/login" element={<h1>seller login</h1>} />
-              <Route path="/seller/dashboard" element={<SellerRoutes><SellerDashboard /></SellerRoutes>} />
-
+              <Route
+                path="/seller/dashboard"
+                element={
+                  <SellerRoutes>
+                    <SellerDashboard />
+                  </SellerRoutes>
+                }
+              />
 
               {/* admin routes  */}
-              <Route path="/seller/dashboard" element={<SuperAdminRoutes><SellerDashboard /></SuperAdminRoutes>} />
+              <Route
+                path="/seller/dashboard"
+                element={
+                  <SuperAdminRoutes>
+                    <SellerDashboard />
+                  </SuperAdminRoutes>
+                }
+              />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
       </Provider>
-      
 
       <Toaster />
-
     </>
   );
 }
@@ -74,23 +86,23 @@ function App() {
 export default App;
 
 const UserRoutes = ({ children }) => {
-  const  currentUser = useSelector((data)=> data?.userData?.userRole)
+  const currentUser = useSelector((data) => data?.userData?.userRole);
   if (currentUser === "USER") {
     return children;
   }
-  return <PageNotFound />
+  return <PageNotFound />;
 };
 
 const SellerRoutes = ({ children }) => {
-  const  currentUser = useSelector((data)=> data?.userData?.userRole)
+  const currentUser = useSelector((data) => data?.userData?.userRole);
   if (currentUser === "SELLER") {
     return children;
   }
-  return <PageNotFound />
+  return <PageNotFound />;
 };
 
 const SuperAdminRoutes = ({ children }) => {
-  const  currentUser = useSelector((data)=> data?.userData?.userRole)
+  const currentUser = useSelector((data) => data?.userData?.userRole);
 
   if (currentUser === "ADMIN") {
     return children;

@@ -9,7 +9,10 @@ const PageNotFound = () => {
       <div className="text-center">
         <p className="text-[24px]">Page Not Found</p>
         <div className="mt-5">
-          <button  onClick={()=> navigate(-1)} className="bg-black text-white py-2 px-3 rounded-md mt-4">
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-black text-white py-2 px-3 rounded-md mt-4"
+          >
             Go Back
           </button>
         </div>

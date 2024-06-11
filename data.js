@@ -1,6 +1,6 @@
 export const data = {
   userProfileData: {
-    _id:1,
+    _id: 1,
     firstName: "tony",
     lastName: "stark",
     email: "stark12@gmail.com",
@@ -13,11 +13,11 @@ export const data = {
     },
     profilePic:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-xnGLZJFli6FRyXSlm8-QnpJb9hh30HffEA&s",
-      userRole:"USER"
+    userRole: "USER",
   },
   products: [
     {
-      _id:2,
+      _id: 2,
       StockNumber: 3630449327,
       productName: "",
       description: "",
@@ -110,11 +110,11 @@ export const data = {
       polish: "",
       symmetry: "",
       certificateDocumentImg: "",
-      storeId:3
+      storeId: 3,
     },
   ],
   storeDetails: {
-    _id: 3, 
+    _id: 3,
     userId: 1,
     storeName: "jd's stores",
     totalProducts: 10,

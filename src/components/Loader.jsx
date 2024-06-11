@@ -1,7 +1,6 @@
 import React from "react";
 
-
-const  Loader = () => {
+const Loader = () => {
   return (
     <div className="loader-container fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
       <div
@@ -14,5 +13,4 @@ const  Loader = () => {
   );
 };
 
-
-export default Loader
+export default Loader;

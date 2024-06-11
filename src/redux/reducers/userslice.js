@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { data } from "../../../data";
 
 const initialState = {
-  ...data.userProfileData,isLoggedIn:false,
+  ...data.userProfileData,
+  isLoggedIn: false,
 };
 
 const userSlice = createSlice({
@@ -16,18 +17,16 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.user = null;
     },
-    updateLoginStatus(state ,action){
-      console.log(action.payload)
-      return {...state , isLoggedIn:action.payload}
+    updateLoginStatus(state, action) {
+      console.log(action.payload);
+      return { ...state, isLoggedIn: action.payload };
     },
-    
-    
   },
 });
 
 export const {
   /* Action creators */
-  updateLoginStatus ,
-  logoutUser
+  updateLoginStatus,
+  logoutUser,
 } = userSlice.actions;
 export default userSlice.reducer;

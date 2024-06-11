@@ -6,7 +6,7 @@ import storeReducer from "./storeSlice";
 const rootReducer = combineReducers({
   ui: uiReducer,
   userData: userReducer,
-  store:storeReducer
+  store: storeReducer,
 });
 
 export default rootReducer;

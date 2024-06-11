@@ -25,7 +25,6 @@ const Footer2 = () => {
             />
             <button
               type="button"
-           
               className="bg-black text-white text-sm rounded-full px-5 py-2.5 ml-4 transition-all font-semibold"
             >
               Subscribe

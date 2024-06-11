@@ -15,15 +15,18 @@ const SellerSignup = () => {
       email: "",
       password: "",
       confirmPassword: "",
-      phone:"",
-      companyName:"",
-      companyEmail:"",
+      phone: "",
+      companyName: "",
+      companyEmail: "",
     },
   });
 
   const handleSignUp = async (data) => {
     try {
-      const res = await axios.post(`${API_URL}/auth/register`,  {...data ,userRole:"USER"}); // Changed to signup endpoint
+      const res = await axios.post(`${API_URL}/auth/register`, {
+        ...data,
+        userRole: "USER",
+      }); // Changed to signup endpoint
       console.log(res);
     } catch (error) {
       console.log(error);

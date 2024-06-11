@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import arrowNext from "../assets/sliderRIght.svg";
 import ArrowPrev from "../assets/sliderLeft.svg";
+import { motion } from "framer-motion";
 
 const diamondShapes = [
   {
@@ -41,10 +42,16 @@ const ProductCarousel = () => {
         // aria-hidden="true"
         // aria-disabled={currentSlide === 0 ? true : false}
         // type="button"
+
         style={{ ...style, display: "block" }}
         onClick={onClick}
       >
-        <img src={arrowNext} height={30} />
+        <motion.img
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          src={arrowNext}
+          height={30}
+        />
       </div>
     );
   }
@@ -57,7 +64,7 @@ const ProductCarousel = () => {
         style={{ ...style, display: "block" }}
         onClick={onClick}
       >
-        <img src={ArrowPrev} height={30} />
+        <motion.img src={ArrowPrev} height={30} />
       </div>
     );
   }

@@ -14,12 +14,12 @@ const Homepage1 = () => {
       {/* <section>
         <img src={BannerImage} className="w-full object-cover h-[90vh]" />
       </section> */}
-      {/* <section className="bg-[#f5f5f5] pt-10">
+      <section className="bg-[#f5f5f5] pt-10">
         <ProductCarousel />
-      </section> */}
-      {/* <section className="bg-[#f5f5f5] pt-10 px-[20px]">
+      </section>
+      <section className="bg-[#f5f5f5] pt-10 px-[20px]">
         <DiamondFilters />
-      </section> */}
+      </section>
       <section className="bg-[#f5f5f5] pt-10 px-[20px]">
         <HomepageReviews />
       </section>

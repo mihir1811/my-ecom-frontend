@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from "../../../../config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import LOGO from "../../../assets/logo.png"
+import LOGO from "../../../assets/logo.png";
 
 const UserSignup = () => {
   const {
@@ -18,33 +18,34 @@ const UserSignup = () => {
       email: "",
       password: "",
       confirmPassword: "",
-      firstName:"",
-      lastName:"",
+      firstName: "",
+      lastName: "",
     },
   });
   const navigate = useNavigate();
 
   const handleSignUp = async (data) => {
     try {
-      const res = await axios.post(`${API_URL}/auth/register`,  {...data ,userRole:"USER"}); // Changed to signup endpoint
+      const res = await axios.post(`${API_URL}/auth/register`, {
+        ...data,
+        userRole: "USER",
+      }); // Changed to signup endpoint
       console.log(res);
       toast.success(res?.data?.message, {
-        duration:3000
-      })
+        duration: 3000,
+      });
 
-      navigate("/login")
+      navigate("/login");
     } catch (error) {
       console.log(error);
-      toast.error(error?.message ,{
-        duration:3000
-      })
+      toast.error(error?.message, {
+        duration: 3000,
+      });
     }
   };
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
-
-
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
@@ -111,7 +112,6 @@ const UserSignup = () => {
                   )}
                 </div>
               </div>
-
 
               <div>
                 <label

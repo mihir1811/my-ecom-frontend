@@ -12,7 +12,6 @@ const UserLogin = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       email: "",
@@ -24,11 +23,14 @@ const UserLogin = () => {
   const handleLogin = async (data) => {
     console.log(data);
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, {...data ,userRole:"USER"});
+      const res = await axios.post(`${API_URL}/auth/login`, {
+        ...data,
+        userRole: "USER",
+      });
 
-      localStorage.setItem("JWT_TOKEN", res?.data?.token)
+      localStorage.setItem("JWT_TOKEN", res?.data?.token);
       console.log(res);
-      dispatch(updateLoginStatus(true))
+      dispatch(updateLoginStatus(true));
       navigate("/");
     } catch (error) {
       console.log(error);

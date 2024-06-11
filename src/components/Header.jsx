@@ -5,7 +5,7 @@ import { PiUserCircle } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import Drawer from "./Drawer/Drawer";
 import { motion } from "framer-motion";
-import LOGO from "../assets/logo.png"
+import LOGO from "../assets/logo.png";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,10 @@ const Header = () => {
         </div>
         <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
           {/* <div>logo</div> */}
-          <img className="w-[80px] bg-transparent h-[80px] rounded-sm" src={LOGO} />
+          <img
+            className="w-[80px] bg-transparent h-[80px] rounded-sm"
+            src={LOGO}
+          />
           <div>
             <ul className="flex items-center">
               <li className="mx-[10px] hover:text-black">
