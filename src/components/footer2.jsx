@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Footer2 = () => {
   return (
-    <footer className="bg-[#dddddd] bg-gradient-to-r from-[#dddddd] via-[#dddddd] to-[#dddddd] py-12 px-10 font-sans tracking-wide">
+    <footer className="bg-[#f5f5f5] bg-gradient-to-r from-[#f5f5f5] via-[#f5f5f5] to-[#f5f5f5] py-12 px-10 font-sans tracking-wide">
       <div className="max-w-[1300px] mx-auto">
         <div className="lg:max-w-[50%] mx-auto text-center">
           <h3 className="text-3xl font-bold text-gray-800">Newsletter</h3>
@@ -16,7 +16,7 @@ const Footer2 = () => {
           <motion.div
             whileHover={{ scale: 1 }}
             whileTap={{ scale: 0.9 }}
-            className="bg-[#f2eded] flex px-2 py-1.5 rounded-full text-left mt-10"
+            className="bg-[#fff] flex px-2 py-1.5 rounded-full text-left mt-10"
           >
             <input
               type="email"

@@ -4,10 +4,13 @@ import axios from "axios";
 import { API_URL } from "../../../../config";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { updateLoginStatus } from "../../../redux/reducers/userslice";
+import { useDispatch } from "react-redux";
 
 const UserLogin = () => {
   const [isPhoneLogin, setIsPhoneLogin] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
 
   const { register, handleSubmit, reset } = useForm({
@@ -25,6 +28,7 @@ const UserLogin = () => {
 
       localStorage.setItem("JWT_TOKEN", res?.data?.token)
       console.log(res);
+      dispatch(updateLoginStatus(true))
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -46,7 +50,6 @@ const UserLogin = () => {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-
           <img
             className="w-[150px] h-[150px] mr-2 rounded-md shadow"
             src="https://static.mhdzn.com/wp-content/uploads/2023/02/logo-jewelery-ecommerce-website-ohana-480x480.jpg"
@@ -113,6 +116,7 @@ const UserLogin = () => {
                   type="password"
                   name="password"
                   id="password"
+                  autoComplete="current-password"
                   {...register("password")}
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

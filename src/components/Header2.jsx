@@ -4,7 +4,7 @@ import LOGO from "../assets/logo.png"
 
 const Header2 = () => {
   return (
-    <header className="bg-[#dddddd]">
+    <header className="bg-[#f5f5f5]">
       <div className="mx-auto py-5 px-[20px] max-w-[1340px] flex justify-between items-center">
         {/* <div className='w-[300px]'>
                 <ul className='flex items-center'>

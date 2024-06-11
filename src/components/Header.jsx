@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-[#dddddd]">
+      <div className="bg-[#f5f5f5]">
         <div className="bg-[#222]">
           <div className="max-w-[1300px] mx-auto text-white py-1">
             <marquee scrollamount="10" scrolldelay="200">
