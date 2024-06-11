@@ -36,7 +36,7 @@ export const { setLoading, setSideBarSmall, setSelectedTab, updateScreenSize } =
   uiSlice.actions;
 export default uiSlice.reducer;
 
-//   // Add event listener (consider using a custom hook for this logic)
+// Add event listener (consider using a custom hook for this logic)
 // window.addEventListener("resize", () => {
 //     store.dispatch(updateScreenSize());
 //   });

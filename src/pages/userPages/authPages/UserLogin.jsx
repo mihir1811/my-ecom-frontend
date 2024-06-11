@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { API_URL } from "../../../config";
+import { API_URL } from "../../../../config";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UserLogin = () => {
   const [isPhoneLogin, setIsPhoneLogin] = useState(false);
+  const navigate = useNavigate();
+
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -18,8 +21,11 @@ const UserLogin = () => {
   const handleLogin = async (data) => {
     console.log(data);
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, data);
+      const res = await axios.post(`${API_URL}/auth/login`, {...data ,userRole:"USER"});
+
+      localStorage.setItem("JWT_TOKEN", res?.data?.token)
       console.log(res);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -40,11 +46,12 @@ const UserLogin = () => {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <img
+          {/* <img
             className="w-8 h-8 mr-2"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
             alt="logo"
-          />
+          /> */}
+          {/* <span>Logo </span> */}
           company name
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

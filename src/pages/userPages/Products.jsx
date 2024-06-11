@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Footer2 from "../components/footer2";
+import Header from "../../components/Header";
+import Footer2 from "../../components/footer2";
 
 const Products = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);

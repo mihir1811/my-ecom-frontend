@@ -2,25 +2,21 @@ import { useState } from "react";
 import "./App.css";
 import ThemeProvider from "./ThemeProvider";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
-import { Provider } from "react-redux";
+import Home from "./pages/userPages/Home";
+import { Provider, useSelector } from "react-redux";
 import store from "./redux/store";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Products from "./pages/Products";
-import PageNotFound from "./pages/PageNotFound";
+import About from "./pages/userPages/About";
+import Contact from "./pages/userPages/Contact";
+import PageNotFound from "./pages/userPages/PageNotFound";
 import SignInPage from "./pages/SignInPage/SignInPage";
-import UserLogin from "./pages/authPages/UserLogin";
-import UserSignup from "./pages/authPages/UserSignup";
+import UserLogin from "./pages/userPages/authPages/UserLogin";
+import UserSignup from "./pages/userPages/authPages/UserSignup";
+import Homepage1 from "./components/Homepage/Homepage1";
+import SellerDashboard from "./pages/sellerPages/SellerDashboard";
+
 
 function App() {
-  const [userRole, setUserRole] = useState("user");
 
-  const [currentUser, setCurrentUser] = useState({
-    name: "tony",
-    nickname: "ironman",
-    role: "seller",
-  });
 
   return (
     <>
@@ -28,12 +24,7 @@ function App() {
         <ThemeProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<h1>home</h1>} />
-              <Route
-                path="/seller/register"
-                element={<h1>new seller register</h1>}
-              />
-              <Route path="/seller/login" element={<h1>new seller login</h1>} />
+              <Route path="/" element={<UserRoutes><Homepage1 /></UserRoutes>} />
               <Route path="/login" element={<UserLogin />} />
               <Route path="/register" element={<UserSignup />} />
               <Route
@@ -45,16 +36,21 @@ function App() {
                 }
               />
               <Route path="/sell-in" element={<SignInPage />} />
-              {/* <Route path="/signup" element={<h1>Sign up</h1>} /> */}
               <Route path="/about" element={<About />} />
               <Route path="/contact-us" element={<Contact />} />
-              <Route path="/products" element={<Products />} />
               <Route
                 path="/terms-and-conditions"
                 element={<h1>terms page</h1>}
               />
+
+              {/* seller routes  */}
+              <Route
+                path="/seller/register"
+                element={<h1>new seller register</h1>}
+              />
+              <Route path="/seller/login" element={<h1>new seller login</h1>} />
+              <Route path="/seller/dashboard" element={<SellerRoutes><SellerDashboard /></SellerRoutes>} />\
               <Route path="*" element={<PageNotFound />} />
-              {/* This line should be at the end */}
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
@@ -66,16 +62,25 @@ function App() {
 export default App;
 
 const UserRoutes = ({ children }) => {
-  return children;
+  const  currentUser = useSelector((data)=> data?.userData?.userRole)
+  if (currentUser === "USER") {
+    return children;
+  }
+  return <PageNotFound />
 };
 
 const SellerRoutes = ({ children }) => {
-  if (currentUser.role === "") {
+  const  currentUser = useSelector((data)=> data?.userData?.userRole)
+  if (currentUser === "SELLER") {
+    return children;
   }
-  return children;
+  return <PageNotFound />
 };
 const SuperAdmin = ({ children }) => {
-  if (currentUser.role === "") {
+  const  currentUser = useSelector((data)=> data?.userData?.userRole)
+
+  if (currentUser === "ADMIN") {
+    return children;
   }
-  return children;
+  return <PageNotFound />;
 };

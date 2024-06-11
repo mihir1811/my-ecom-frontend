@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { API_URL } from "../../../config";
+import { API_URL } from "../../../../config";
 import { Link } from "react-router-dom";
 
 const UserSignup = () => {
@@ -20,7 +20,7 @@ const UserSignup = () => {
 
   const handleSignUp = async (data) => {
     try {
-      const res = await axios.post(`${API_URL}/auth/register`, data); // Changed to signup endpoint
+      const res = await axios.post(`${API_URL}/auth/register`,  {...data ,userRole:"USER"}); // Changed to signup endpoint
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -34,11 +34,12 @@ const UserSignup = () => {
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <img
+          {/* <img
             className="w-8 h-8 mr-2"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
             alt="logo"
-          />
+          /> */}
+          {/* <span>Logo </span> */}
           Flowbite
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

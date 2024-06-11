@@ -3,24 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import { data } from "../../../data";
 
 const initialState = {
-  ...data.userProfileData,
+  ...data.storeDetails,
 };
 
-const userSlice = createSlice({
-  name: "user",
+const storeSlice = createSlice({
+  name: "store",
   initialState,
   reducers: {
     // Define reducers and action creators here
-    logoutUser(state) {
-      state.token = null;
-      state.isAuthenticated = false;
-      state.user = null;
-    },
-
   },
 });
 
 export const {
   /* Action creators */
-} = userSlice.actions;
-export default userSlice.reducer;
+} = storeSlice.actions;
+export default storeSlice.reducer;
