@@ -16,9 +16,9 @@ const Homepage1 = () => {
       {/* <section className="bg-[#dddddd] pt-10">
         <ProductCarousel />
       </section> */}
-      <section className="bg-[#dddddd] pt-10 px-[20px]">
+      {/* <section className="bg-[#dddddd] pt-10 px-[20px]">
         <DiamondFilters />
-      </section>
+      </section> */}
       <section className="bg-[#dddddd] pt-10 px-[20px]">
         <HomepageReviews />
       </section>

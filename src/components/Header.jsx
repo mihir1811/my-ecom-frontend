@@ -5,6 +5,7 @@ import { PiUserCircle } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import Drawer from "./Drawer/Drawer";
 import { motion } from "framer-motion";
+import LOGO from "../assets/logo.png"
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -14,30 +15,30 @@ const Header = () => {
   return (
     <>
       <div className="bg-[#dddddd]">
-        {/* <div className="bg-[#222]">
+        <div className="bg-[#222]">
           <div className="max-w-[1300px] mx-auto text-white py-1">
             <marquee scrollamount="10" scrolldelay="200">
               Fast scrolling text!
             </marquee>
           </div>
-        </div> */}
-        <div className="mx-auto max-w-[1350px] px-[20px] flex items-center justify-between">
+        </div>
+        <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
           {/* <div>logo</div> */}
-          <img className="w-[100px] h-[100px] rounded-sm" src="https://static.mhdzn.com/wp-content/uploads/2023/02/logo-jewelery-ecommerce-website-ohana-480x480.jpg" />
+          <img className="w-[80px] bg-transparent h-[80px] rounded-sm" src={LOGO} />
           <div>
             <ul className="flex items-center">
               <li className="mx-[10px] hover:text-black">
-                <a href="">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="mx-[10px]">
                 <a href="/products">Products</a>
               </li>
 
               <li className="mx-[10px]">
-                <a href="">About Us</a>
+                <a href="about">About Us</a>
               </li>
               <li className="mx-[10px]">
-                <a href="">Contact Us</a>
+                <a href="contact-us">Contact Us</a>
               </li>
             </ul>
           </div>

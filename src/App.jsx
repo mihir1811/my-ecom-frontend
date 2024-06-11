@@ -14,6 +14,7 @@ import UserSignup from "./pages/userPages/authPages/UserSignup";
 import Homepage1 from "./components/Homepage/Homepage1";
 import SellerDashboard from "./pages/sellerPages/SellerDashboard";
 import Products from "./pages/userPages/Products";
+import SellerSignup from "./pages/sellerPages/SellerLogin";
 
 
 function App() {
@@ -37,19 +38,20 @@ function App() {
                 }
               />
               <Route path="/about" element={<About />} />
+              <Route path="/cart" element={<h1>cart</h1>} />
+              <Route path="/checkout" element={<h1>checkout</h1>} />
               <Route path="/products" element={<Products   />} />
               <Route path="/contact-us" element={<Contact />} />
               <Route
                 path="/terms-and-conditions"
                 element={<h1>terms page</h1>}
               />
-
               {/* seller routes  */}
               <Route
                 path="/seller/register"
-                element={<h1>new seller register</h1>}
+                element={<SellerSignup />}
               />
-              <Route path="/seller/login" element={<h1>new seller login</h1>} />
+              <Route path="/seller/login" element={<h1>seller login</h1>} />
               <Route path="/seller/dashboard" element={<SellerRoutes><SellerDashboard /></SellerRoutes>} />
 
 
