@@ -23,14 +23,13 @@ const Footer2 = () => {
               placeholder="Enter your email"
               className="w-full outline-none bg-transparent text-sm pl-4"
             />
-            <motion.button
+            <button
               type="button"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="bg-gray-600 hover:bg-gray-700 text-white text-sm rounded-full px-5 py-2.5 ml-4 transition-all font-semibold"
+           
+              className="bg-black text-white text-sm rounded-full px-5 py-2.5 ml-4 transition-all font-semibold"
             >
               Subscribe
-            </motion.button>
+            </button>
           </motion.div>
         </div>
 
