@@ -4,6 +4,7 @@ const DiamondFilters = () => {
   const [priceValue, setPriceValue] = useState(0);
   const [weightValue, setWeightValue] = useState(0);
   const [colorValue, setColourValue] = useState(0);
+
   return (
     <div className="mx-auto max-w-[1320px] bg-white rounded-[30px] p-10">
       <div className="grid grid-cols-3 gap-10">
@@ -132,7 +133,7 @@ const DiamondFilters = () => {
           </div>
         </div>
       </div>
-
+      {/* 
       <div className="py-3">
         <h4 className="font-rossa text-[24px]">Stone Shape</h4>
         <div className="grid grid-cols-5 gap-5 mt-3">
@@ -164,89 +165,240 @@ const DiamondFilters = () => {
             Cushion
           </button>
         </div>
-      </div>
-      <div className="py-3">
-        <h4 className="font-rossa text-[24px]">Stone Type</h4>
-        <div className="grid grid-cols-5 gap-5 mt-3">
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            All
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Natural{" "}
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Lab made
-          </button>
-        </div>
-      </div>
-      <div className="py-3">
-        <h4 className="font-rossa text-[24px]">Cut Grade</h4>
-        <div className="grid grid-cols-5 gap-5 mt-3">
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            All
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Good{" "}
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Very Good
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Ideal
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            True Hearts
-          </button>
-        </div>
-      </div>
-      <div className="py-3">
-        <h4 className="font-rossa text-[24px]">Clarity</h4>
-        <div className="grid grid-cols-5 gap-5 mt-3">
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            1F
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            WS1{" "}
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            vs1
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            vs2
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            S11
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            S12
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            S13
-          </button>
-        </div>
-      </div>
-      <div className="py-3">
-        <h4 className="font-rossa text-[24px]">Flouresense</h4>
-        <div className="grid grid-cols-5 gap-5 mt-3">
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            None
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Faint{" "}
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Medium
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Strong
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Very Strong
-          </button>
-        </div>
-      </div>
+      </div> */}
+
+      <StoneShapes />
+      <StoneType />
+      <CutGrade />
+      <Clarity />
+      <Flouresense />
     </div>
   );
 };
 
 export default DiamondFilters;
+
+const Flouresense = () => {
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const shapes = ["None", "Faint", "Medium", "Strong", "Very Strong"];
+
+  const handleButtonClick = (shape) => {
+    if (shape === "All") {
+      selectedShapes.length > 0 && selectedShapes.includes("All")
+        ? setSelectedShapes([])
+        : setSelectedShapes(shapes);
+    } else {
+      if (selectedShapes.includes("All")) {
+        setSelectedShapes([shape]);
+      } else {
+        setSelectedShapes((prevSelectedShapes) =>
+          prevSelectedShapes.includes(shape)
+            ? prevSelectedShapes.filter((s) => s !== shape)
+            : [...prevSelectedShapes, shape],
+        );
+      }
+    }
+  };
+
+  return (
+    <div className="py-3">
+      <h4 className="font-rossa text-[24px]">Flouresense</h4>
+      <div className="grid grid-cols-5 gap-5 mt-3">
+        {shapes.map((shape) => (
+          <ShapeButton
+            key={shape}
+            label={shape}
+            isActive={selectedShapes.includes(shape)}
+            onClick={() => handleButtonClick(shape)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Clarity = () => {
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const shapes = ["All", "1F", "WS1", "vs1", "vs2", "S11", "S12", "S13"];
+
+  const handleButtonClick = (shape) => {
+    if (shape === "All") {
+      selectedShapes.length > 0 && selectedShapes.includes("All")
+        ? setSelectedShapes([])
+        : setSelectedShapes(shapes);
+    } else {
+      if (selectedShapes.includes("All")) {
+        setSelectedShapes([shape]);
+      } else {
+        setSelectedShapes((prevSelectedShapes) =>
+          prevSelectedShapes.includes(shape)
+            ? prevSelectedShapes.filter((s) => s !== shape)
+            : [...prevSelectedShapes, shape],
+        );
+      }
+    }
+  };
+
+  return (
+    <div className="py-3">
+      <h4 className="font-rossa text-[24px]">Clarity</h4>
+      <div className="grid grid-cols-5 gap-5 mt-3">
+        {shapes.map((shape) => (
+          <ShapeButton
+            key={shape}
+            label={shape}
+            isActive={selectedShapes.includes(shape)}
+            onClick={() => handleButtonClick(shape)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const CutGrade = () => {
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const shapes = ["All", "Good", "Very Good", "Ideal", "True Hearts"];
+
+  const handleButtonClick = (shape) => {
+    if (shape === "All") {
+      selectedShapes.length > 0 && selectedShapes.includes("All")
+        ? setSelectedShapes([])
+        : setSelectedShapes(shapes);
+    } else {
+      if (selectedShapes.includes("All")) {
+        setSelectedShapes([shape]);
+      } else {
+        setSelectedShapes((prevSelectedShapes) =>
+          prevSelectedShapes.includes(shape)
+            ? prevSelectedShapes.filter((s) => s !== shape)
+            : [...prevSelectedShapes, shape],
+        );
+      }
+    }
+  };
+
+  return (
+    <div className="py-3">
+      <h4 className="font-rossa text-[24px]">Cut Grade</h4>
+      <div className="grid grid-cols-5 gap-5 mt-3">
+        {shapes.map((shape) => (
+          <ShapeButton
+            key={shape}
+            label={shape}
+            isActive={selectedShapes.includes(shape)}
+            onClick={() => handleButtonClick(shape)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const StoneShapes = () => {
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const shapes = [
+    "All",
+    "Round",
+    "Pear",
+    "Emerald",
+    "Oval",
+    "Heart",
+    "Marquise",
+    "Asscher",
+    "Cushion",
+  ];
+
+  const handleButtonClick = (shape) => {
+    if (shape === "All") {
+      selectedShapes.length > 0 && selectedShapes.includes("All")
+        ? setSelectedShapes([])
+        : setSelectedShapes(shapes);
+    } else {
+      if (selectedShapes.includes("All")) {
+        setSelectedShapes([shape]);
+      } else {
+        setSelectedShapes((prevSelectedShapes) =>
+          prevSelectedShapes.includes(shape)
+            ? prevSelectedShapes.filter((s) => s !== shape)
+            : [...prevSelectedShapes, shape],
+        );
+      }
+    }
+  };
+
+  return (
+    <div className="py-3">
+      <h4 className="font-rossa text-[24px]">Stone Shape</h4>
+      <div className="grid grid-cols-5 gap-5 mt-3">
+        {shapes.map((shape) => (
+          <ShapeButton
+            key={shape}
+            label={shape}
+            isActive={selectedShapes.includes(shape)}
+            onClick={() => handleButtonClick(shape)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const StoneType = () => {
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const shapes = ["All", "Lab", "Natural"];
+
+  const handleButtonClick = (shape) => {
+    if (shape === "All") {
+      selectedShapes.length > 0 && selectedShapes.includes("All")
+        ? setSelectedShapes([])
+        : setSelectedShapes(shapes);
+    } else {
+      if (selectedShapes.includes("All")) {
+        setSelectedShapes([shape]);
+      } else {
+        setSelectedShapes((prevSelectedShapes) =>
+          prevSelectedShapes.includes(shape)
+            ? prevSelectedShapes.filter((s) => s !== shape)
+            : [...prevSelectedShapes, shape],
+        );
+      }
+    }
+  };
+
+  return (
+    <div className="py-3">
+      <h4 className="font-rossa text-[24px]">Stone Type</h4>
+      <div className="grid grid-cols-5 gap-5 mt-3">
+        {shapes.map((shape) => (
+          <ShapeButton
+            key={shape}
+            label={shape}
+            isActive={selectedShapes.includes(shape)}
+            onClick={() => handleButtonClick(shape)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ShapeButton = ({ label, isActive, onClick }) => {
+  return (
+    <button
+      className={`${
+        isActive ? "bg-[#8FAAEE] text-white" : "bg-[#CFD9FF] text-[#001858]"
+      } rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer`}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  );
+};
+
+// export default ShapeButton;

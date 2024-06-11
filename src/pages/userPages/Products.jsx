@@ -78,7 +78,7 @@ const Products = () => {
       </div> */}
 
       <div className="mx-auto max-w-[1320px]">
-        <div className="flex mt-5">
+        <div className="flex my-5">
           <div className="w-[300px] bg-white rounded-[10px] p-3">
             <h3 className="font-rossa text-gray-400  text-[22px] font-semibold">
               Filters

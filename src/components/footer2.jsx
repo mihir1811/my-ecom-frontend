@@ -12,7 +12,6 @@ const Footer2 = () => {
             news, updates, and exclusive offers. Get valuable insights. Join our
             community today!
           </p>
-
           <motion.div
             whileHover={{ scale: 1 }}
             whileTap={{ scale: 0.9 }}
@@ -120,16 +119,14 @@ const Footer2 = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6 text-gray-800">
-              Social Media
-            </h4>
+            <h4 className="text-lg font-bold mb-6 text-gray-800">We are on</h4>
             <ul className="space-y-4">
               <li>
                 <a
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Our Story
+                  Instagram Link
                 </a>
               </li>
               <li>
@@ -137,7 +134,7 @@ const Footer2 = () => {
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Mission and Values
+                  facebook link
                 </a>
               </li>
               <li>
@@ -145,7 +142,7 @@ const Footer2 = () => {
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Team
+                  other platform
                 </a>
               </li>
               <li>
@@ -153,7 +150,7 @@ const Footer2 = () => {
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Testimonials
+                  other platform
                 </a>
               </li>
             </ul>
