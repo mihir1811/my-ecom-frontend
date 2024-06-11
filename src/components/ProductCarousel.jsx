@@ -64,7 +64,12 @@ const ProductCarousel = () => {
         style={{ ...style, display: "block" }}
         onClick={onClick}
       >
-        <motion.img src={ArrowPrev} height={30} />
+        <motion.img
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          src={ArrowPrev}
+          height={30}
+        />
       </div>
     );
   }
