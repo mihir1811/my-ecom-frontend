@@ -8,11 +8,12 @@ import store from "./redux/store";
 import About from "./pages/userPages/About";
 import Contact from "./pages/userPages/Contact";
 import PageNotFound from "./pages/userPages/PageNotFound";
-import SignInPage from "./pages/SignInPage/SignInPage";
+// import SignInPage from "./pages/SignInPage/SignInPage";
 import UserLogin from "./pages/userPages/authPages/UserLogin";
 import UserSignup from "./pages/userPages/authPages/UserSignup";
 import Homepage1 from "./components/Homepage/Homepage1";
 import SellerDashboard from "./pages/sellerPages/SellerDashboard";
+import Products from "./pages/userPages/Products";
 
 
 function App() {
@@ -35,8 +36,8 @@ function App() {
                   </UserRoutes>
                 }
               />
-              <Route path="/sell-in" element={<SignInPage />} />
               <Route path="/about" element={<About />} />
+              <Route path="/products" element={<Products   />} />
               <Route path="/contact-us" element={<Contact />} />
               <Route
                 path="/terms-and-conditions"
@@ -49,7 +50,11 @@ function App() {
                 element={<h1>new seller register</h1>}
               />
               <Route path="/seller/login" element={<h1>new seller login</h1>} />
-              <Route path="/seller/dashboard" element={<SellerRoutes><SellerDashboard /></SellerRoutes>} />\
+              <Route path="/seller/dashboard" element={<SellerRoutes><SellerDashboard /></SellerRoutes>} />
+
+
+              {/* admin routes  */}
+              <Route path="/seller/dashboard" element={<SuperAdminRoutes><SellerDashboard /></SuperAdminRoutes>} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </BrowserRouter>
@@ -76,7 +81,8 @@ const SellerRoutes = ({ children }) => {
   }
   return <PageNotFound />
 };
-const SuperAdmin = ({ children }) => {
+
+const SuperAdminRoutes = ({ children }) => {
   const  currentUser = useSelector((data)=> data?.userData?.userRole)
 
   if (currentUser === "ADMIN") {

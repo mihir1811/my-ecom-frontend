@@ -21,8 +21,9 @@ const Header = () => {
             </marquee>
           </div>
         </div> */}
-        <div className="mx-auto max-w-[1350px] px-[20px] h-[60px] flex items-center justify-between">
-          <div>logo</div>
+        <div className="mx-auto max-w-[1350px] px-[20px] flex items-center justify-between">
+          {/* <div>logo</div> */}
+          <img className="w-[100px] h-[100px] rounded-sm" src="https://static.mhdzn.com/wp-content/uploads/2023/02/logo-jewelery-ecommerce-website-ohana-480x480.jpg" />
           <div>
             <ul className="flex items-center">
               <li className="mx-[10px] hover:text-black">
