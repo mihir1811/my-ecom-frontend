@@ -80,7 +80,7 @@ const ProductCarousel = () => {
     slidesToShow: 7,
     slidesToScroll: 1,
     className: "myCustomCarousel",
-    centerMode: true,
+    // centerMode: true,
     // arrows:false,
     // swipeToSlide: true,
     // focusOnSelect: true,

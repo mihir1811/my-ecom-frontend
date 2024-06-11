@@ -23,7 +23,7 @@ const uiSlice = createSlice({
     setSelectedTab(state, action) {
       state.selectedTab = action.payload;
     },
-    updateScreenSize(state) {
+    setScreenSize(state) {
       state.screenSize = {
         height: window.innerHeight,
         width: window.innerWidth,
@@ -32,7 +32,7 @@ const uiSlice = createSlice({
   },
 });
 
-export const { setLoading, setSideBarSmall, setSelectedTab, updateScreenSize } =
+export const { setLoading, setSideBarSmall, setSelectedTab, setScreenSize } =
   uiSlice.actions;
 export default uiSlice.reducer;
 
