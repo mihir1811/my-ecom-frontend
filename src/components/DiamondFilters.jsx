@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const DiamondFilters = () => {
   const [priceValue, setPriceValue] = useState(0);
@@ -133,6 +133,7 @@ const DiamondFilters = () => {
           </div>
         </div>
       </div>
+      <PriceRangeCard />
       {/* 
       <div className="py-3">
         <h4 className="font-rossa text-[24px]">Stone Shape</h4>
@@ -402,3 +403,77 @@ const ShapeButton = ({ label, isActive, onClick }) => {
 };
 
 // export default ShapeButton;
+
+
+
+
+const PriceRangeCard = ({ 
+  title = "Price Range", 
+  minLabel = "1", 
+  maxLabel = "10", 
+  initialMin = 0, 
+  initialMax = 1, 
+  currentRangeValue = 10,
+  onRangeChange
+}) => {
+  const [minValue, setMinValue] = useState(initialMin);
+  const [maxValue, setMaxValue] = useState(initialMax);
+  const [currentRange, setCurrentRange] = useState(currentRangeValue);
+
+  useEffect(() => {
+    setMinValue(initialMin);
+  }, [initialMin]);
+
+  useEffect(() => {
+    setMaxValue(initialMax);
+  }, [initialMax]);
+
+  useEffect(() => {
+    if (onRangeChange) {
+      onRangeChange({ minValue, maxValue, currentRange });
+    }
+  }, [minValue, maxValue, currentRange, onRangeChange]);
+
+  useEffect(() => {
+    setCurrentRange((minValue + maxValue) / 2); // Example calculation for current range
+  }, [minValue, maxValue]);
+
+  return (
+    <div className="py-6">
+      <div className="max-w-sm mx-auto bg-white p-8 rounded-xl shadow-md">
+        <h4 className="text-2xl font-bold text-gray-800 mb-4">{title}</h4>
+        <div className="flex justify-between items-center text-blue-700 font-medium mb-4">
+          <div>${minValue}</div>
+          <div>-</div>
+          <div>${maxValue}</div>
+        </div>
+        <small className="block text-gray-500 text-sm mb-4">
+          Current Range:
+          <div className="inline-block ml-1">${currentRange}</div>
+        </small>
+        <div className="flex justify-between text-xs text-gray-500 mb-4">
+          <label>{minLabel}</label>
+          <label>{maxLabel}</label>
+        </div>
+        <div className="relative h-6">
+          <input
+            type="range"
+            min="1"
+            max="10000"
+            value={minValue}
+            onChange={(e) => setMinValue(Number(e.target.value))}
+            className="absolute w-full h-1 bg-gray-400 appearance-none"
+          />
+          <input
+            type="range"
+            min="0"
+            max="10"
+            value={maxValue}
+            onChange={(e) => setMaxValue(Number(e.target.value))}
+            className="absolute w-full h-1 bg-transparent appearance-none"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

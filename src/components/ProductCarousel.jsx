@@ -140,7 +140,7 @@ const ProductCarousel = () => {
           })}
         </Slider>
       </div>
-      <style jsx>
+      <style jsx="true">
         {`
           .myCustomCarousel .slick-arrow {
             color: white !important;

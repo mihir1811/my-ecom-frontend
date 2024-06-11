@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { updateLoginStatus } from "../../../redux/reducers/userslice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 const UserLogin = () => {
   const [isPhoneLogin, setIsPhoneLogin] = useState(false);
@@ -31,9 +32,12 @@ const UserLogin = () => {
       localStorage.setItem("JWT_TOKEN", res?.data?.token);
       console.log(res);
       dispatch(updateLoginStatus(true));
+      toast.success('user logged in successfully')
+
       navigate("/");
     } catch (error) {
       console.log(error);
+      toast.error(error.message)
     }
   };
 
@@ -46,7 +50,7 @@ const UserLogin = () => {
   }, [isPhoneLogin, reset]);
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-[#f5f5f5] dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
