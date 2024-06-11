@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API_URL } from "../../../../config";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import LOGO from "../../../assets/logo.png"
 
 const UserSignup = () => {
   const {
@@ -19,18 +22,29 @@ const UserSignup = () => {
       lastName:"",
     },
   });
+  const navigate = useNavigate();
 
   const handleSignUp = async (data) => {
     try {
       const res = await axios.post(`${API_URL}/auth/register`,  {...data ,userRole:"USER"}); // Changed to signup endpoint
       console.log(res);
+      toast.success(res?.data?.message, {
+        duration:3000
+      })
+
+      navigate("/login")
     } catch (error) {
       console.log(error);
+      toast.error(error?.message ,{
+        duration:3000
+      })
     }
   };
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
+
+
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
@@ -42,7 +56,7 @@ const UserSignup = () => {
             alt="logo"
           /> */}
           {/* <span>Logo </span> */}
-          Flowbite
+          <img className="w-[100px] h-[100px]" src={LOGO} alt="logo" />
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

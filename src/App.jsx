@@ -15,6 +15,7 @@ import Homepage1 from "./components/Homepage/Homepage1";
 import SellerDashboard from "./pages/sellerPages/SellerDashboard";
 import Products from "./pages/userPages/Products";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
@@ -62,6 +63,10 @@ function App() {
           </BrowserRouter>
         </ThemeProvider>
       </Provider>
+      
+
+      <Toaster />
+
     </>
   );
 }

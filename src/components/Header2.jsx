@@ -1,5 +1,6 @@
 import React from "react";
 import cartIcon from "../assets/cart.svg";
+import LOGO from "../assets/logo.png"
 
 const Header2 = () => {
   return (
@@ -12,7 +13,7 @@ const Header2 = () => {
                 </ul>
             </div> */}
         {/* <h1 className="font-bold text-3xl">LOGO</h1> */}
-        <img className="w-[100px] h-[100px] rounded-sm" src="https://static.mhdzn.com/wp-content/uploads/2023/02/logo-jewelery-ecommerce-website-ohana-480x480.jpg"  />
+        <img className="w-[80px] h-[80px] rounded-sm" src={LOGO}  />
         <div className="flex items-center">
           <a className="cursor-pointer" href="/login">
             login
