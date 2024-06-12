@@ -15,6 +15,7 @@ import SellerDashboard from "./pages/sellerPages/SellerDashboard";
 import Products from "./pages/userPages/Products";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
 import "./App.css";
+import CartPage from "./pages/userPages/CartPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,18 +53,13 @@ const App = () => {
           />
           <Route path="/login" element={<UserLogin />} />
           <Route path="/register" element={<UserSignup />} />
-          {/* <Route
-            path="/home"
-            element={
-              <UserRoutes>
-                <Home />
-              </UserRoutes>
-            }
-          /> */}
+
           <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<h1>Cart</h1>} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/wishlist" element={<CartPage />} />
           <Route path="/checkout" element={<h1>Checkout</h1>} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/shop" element={<Products />} />
+          <Route path="/product/:id" element={<Products />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route
             path="/terms-and-conditions"
@@ -75,9 +71,9 @@ const App = () => {
           <Route
             path="/seller/dashboard"
             element={
-              <SellerRoutes>
-                <SellerDashboard />
-              </SellerRoutes>
+              // <SellerRoutes>
+              <SellerDashboard />
+              // </SellerRoutes>
             }
           />
           {/* Admin routes */}

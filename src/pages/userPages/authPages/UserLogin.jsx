@@ -32,12 +32,12 @@ const UserLogin = () => {
       localStorage.setItem("JWT_TOKEN", res?.data?.token);
       console.log(res);
       dispatch(updateLoginStatus(true));
-      toast.success('user logged in successfully')
+      toast.success("user logged in successfully");
 
       navigate("/");
     } catch (error) {
       console.log(error);
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 

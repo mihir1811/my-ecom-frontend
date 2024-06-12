@@ -188,8 +188,12 @@ const DiamondFilters = () => {
 
 export default DiamondFilters;
 
-const ReUsableComponent = ({filterOptions , selectedValues , setSelectedValues, title}) =>{
-
+const ReUsableComponent = ({
+  filterOptions,
+  selectedValues,
+  setSelectedValues,
+  title,
+}) => {
   const [selectedShapes, setSelectedShapes] = useState([]);
 
   const shapes = ["None", "Faint", "Medium", "Strong", "Very Strong"];
@@ -206,7 +210,7 @@ const ReUsableComponent = ({filterOptions , selectedValues , setSelectedValues, 
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape]
+            : [...prevSelectedShapes, shape],
         );
       }
     }
@@ -227,8 +231,7 @@ const ReUsableComponent = ({filterOptions , selectedValues , setSelectedValues, 
       </div>
     </div>
   );
-}
-
+};
 
 const Flouresense = () => {
   const [selectedShapes, setSelectedShapes] = useState([]);
@@ -247,7 +250,7 @@ const Flouresense = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape]
+            : [...prevSelectedShapes, shape],
         );
       }
     }
@@ -287,7 +290,7 @@ const Clarity = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape]
+            : [...prevSelectedShapes, shape],
         );
       }
     }
@@ -327,7 +330,7 @@ const CutGrade = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape]
+            : [...prevSelectedShapes, shape],
         );
       }
     }
@@ -377,7 +380,7 @@ const StoneShapes = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape]
+            : [...prevSelectedShapes, shape],
         );
       }
     }
@@ -417,7 +420,7 @@ const StoneType = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape]
+            : [...prevSelectedShapes, shape],
         );
       }
     }

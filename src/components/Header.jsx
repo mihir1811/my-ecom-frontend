@@ -34,14 +34,14 @@ const Header = () => {
                 <a href="/">Home</a>
               </li>
               <li className="mx-[10px]">
-                <a href="/products">Products</a>
+                <a href="/shop">Shop</a>
               </li>
 
               <li className="mx-[10px]">
-                <a href="about">About Us</a>
+                <a href="/about">About Us</a>
               </li>
               <li className="mx-[10px]">
-                <a href="contact-us">Contact Us</a>
+                <a href="/contact-us">Contact Us</a>
               </li>
             </ul>
           </div>

@@ -6,11 +6,13 @@ import HomepageReviews from "../HomepageReviews/HomepageReviews";
 import BannerImage from "../../assets/banner.png";
 import Footer2 from "../footer2";
 import ExploreNow from "../../pages/userPages/ExploreNow";
+import Header from "../Header";
 
 const Homepage1 = () => {
   return (
     <>
-      <Header2 />
+      {/* <Header2 /> */}
+      <Header />
       {/* <section>
         <img src={BannerImage} className="w-full object-cover h-[90vh]" />
       </section> */}
