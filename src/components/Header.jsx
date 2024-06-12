@@ -18,7 +18,7 @@ const Header = () => {
         <div className="bg-[#222]">
           <div className="max-w-[1300px] mx-auto text-white py-1">
             <marquee scrollamount="10" scrolldelay="200">
-              GET FLAT 10% DISCOUNT ON YOUR FIRST ORDER
+              GET FLAT 5% DISCOUNT ON YOUR FIRST ORDER
             </marquee>
           </div>
         </div>

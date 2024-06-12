@@ -16,6 +16,7 @@ import Products from "./pages/userPages/Products";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
 import "./App.css";
 import CartPage from "./pages/userPages/CartPage";
+import CheckOutPage from "./pages/userPages/CheckOutPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/favourites" element={<CartPage />} />
-          <Route path="/checkout" element={<h1>Checkout</h1>} />
+          <Route path="/checkout" element={<CheckOutPage />} />
           <Route path="/shop" element={<Products />} />
           <Route path="/product/:id" element={<Products />} />
           <Route path="/contact-us" element={<Contact />} />
