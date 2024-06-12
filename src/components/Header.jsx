@@ -18,12 +18,11 @@ const Header = () => {
         <div className="bg-[#222]">
           <div className="max-w-[1300px] mx-auto text-white py-1">
             <marquee scrollamount="10" scrolldelay="200">
-              Fast scrolling text!
+              GET FLAT 10% DISCOUNT ON YOUR FIRST ORDER
             </marquee>
           </div>
         </div>
         <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
-          {/* <div>logo</div> */}
           <img
             className="w-[80px] bg-transparent h-[80px] rounded-sm"
             src={LOGO}
