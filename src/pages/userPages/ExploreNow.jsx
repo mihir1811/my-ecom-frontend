@@ -9,9 +9,14 @@ const ExploreNow = () => {
           <div className="flex-auto my-auto max-md:max-w-full ">
             Unleash Your Diamond
           </div>
-          <img
+          {/* <img
             loading="lazy"
             srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/3dbcb7dc76859537d991193e9cac4efef45bab9ca588406ac2d4655c286dad81?apiKey=882b46752b97497eacdab9033a01af91&"
+            className="shrink-0 max-w-full aspect-[1.33] w-[125px]"
+          /> */}
+          <img
+            loading="lazy"
+            src="https://cdn.shoplightspeed.com/shops/644087/files/51048222/sickgentlefluke-max-1mb.gif"
             className="shrink-0 max-w-full aspect-[1.33] w-[125px]"
           />
         </div>

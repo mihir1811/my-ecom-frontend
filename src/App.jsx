@@ -11,12 +11,9 @@ import Contact from "./pages/userPages/Contact";
 import PageNotFound from "./pages/userPages/PageNotFound";
 import UserLogin from "./pages/userPages/authPages/UserLogin";
 import UserSignup from "./pages/userPages/authPages/UserSignup";
-import Homepage1 from "./components/Homepage/Homepage1";
 import SellerDashboard from "./pages/sellerPages/SellerDashboard";
 import Products from "./pages/userPages/Products";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
-
-import ThemeProvider from "./ThemeProvider";
 import "./App.css";
 
 const App = () => {
@@ -49,20 +46,20 @@ const App = () => {
             path="/"
             element={
               <UserRoutes>
-                <Homepage1 />
+                <Home />
               </UserRoutes>
             }
           />
           <Route path="/login" element={<UserLogin />} />
           <Route path="/register" element={<UserSignup />} />
-          <Route
+          {/* <Route
             path="/home"
             element={
               <UserRoutes>
                 <Home />
               </UserRoutes>
             }
-          />
+          /> */}
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<h1>Cart</h1>} />
           <Route path="/checkout" element={<h1>Checkout</h1>} />

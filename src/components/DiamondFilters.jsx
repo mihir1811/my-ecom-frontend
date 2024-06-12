@@ -133,7 +133,7 @@ const DiamondFilters = () => {
           </div>
         </div>
       </div>
-      <PriceRangeCard />
+      {/* <PriceRangeCard /> */}
       {/* 
       <div className="py-3">
         <h4 className="font-rossa text-[24px]">Stone Shape</h4>
@@ -173,11 +173,62 @@ const DiamondFilters = () => {
       <CutGrade />
       <Clarity />
       <Flouresense />
+
+      <div className="flex justify-center flex-wrap mt-5">
+        <button className="bg-[#CFD9FF] px-4 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
+          Find
+        </button>
+        <button className="bg-[#CFD9FF] ms-2 px-4 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
 
 export default DiamondFilters;
+
+const ReUsableComponent = ({filterOptions , selectedValues , setSelectedValues, title}) =>{
+
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const shapes = ["None", "Faint", "Medium", "Strong", "Very Strong"];
+
+  const handleButtonClick = (shape) => {
+    if (shape === "All") {
+      selectedShapes.length > 0 && selectedShapes.includes("All")
+        ? setSelectedShapes([])
+        : setSelectedShapes(shapes);
+    } else {
+      if (selectedShapes.includes("All")) {
+        setSelectedShapes([shape]);
+      } else {
+        setSelectedShapes((prevSelectedShapes) =>
+          prevSelectedShapes.includes(shape)
+            ? prevSelectedShapes.filter((s) => s !== shape)
+            : [...prevSelectedShapes, shape]
+        );
+      }
+    }
+  };
+
+  return (
+    <div className="py-3">
+      <h4 className="font-rossa text-[24px]">Flouresense</h4>
+      <div className="grid grid-cols-5 gap-5 mt-3">
+        {shapes.map((shape) => (
+          <ShapeButton
+            key={shape}
+            label={shape}
+            isActive={selectedShapes.includes(shape)}
+            onClick={() => handleButtonClick(shape)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 
 const Flouresense = () => {
   const [selectedShapes, setSelectedShapes] = useState([]);
@@ -196,7 +247,7 @@ const Flouresense = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
+            : [...prevSelectedShapes, shape]
         );
       }
     }
@@ -236,7 +287,7 @@ const Clarity = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
+            : [...prevSelectedShapes, shape]
         );
       }
     }
@@ -276,7 +327,7 @@ const CutGrade = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
+            : [...prevSelectedShapes, shape]
         );
       }
     }
@@ -326,7 +377,7 @@ const StoneShapes = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
+            : [...prevSelectedShapes, shape]
         );
       }
     }
@@ -366,7 +417,7 @@ const StoneType = () => {
         setSelectedShapes((prevSelectedShapes) =>
           prevSelectedShapes.includes(shape)
             ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
+            : [...prevSelectedShapes, shape]
         );
       }
     }
@@ -404,17 +455,14 @@ const ShapeButton = ({ label, isActive, onClick }) => {
 
 // export default ShapeButton;
 
-
-
-
-const PriceRangeCard = ({ 
-  title = "Price Range", 
-  minLabel = "1", 
-  maxLabel = "10", 
-  initialMin = 0, 
-  initialMax = 1, 
+const PriceRangeCard = ({
+  title = "Price Range",
+  minLabel = "1",
+  maxLabel = "10",
+  initialMin = 0,
+  initialMax = 10000,
   currentRangeValue = 10,
-  onRangeChange
+  onRangeChange,
 }) => {
   const [minValue, setMinValue] = useState(initialMin);
   const [maxValue, setMaxValue] = useState(initialMax);
@@ -437,6 +485,20 @@ const PriceRangeCard = ({
   useEffect(() => {
     setCurrentRange((minValue + maxValue) / 2); // Example calculation for current range
   }, [minValue, maxValue]);
+
+  const handleMinChange = (e) => {
+    const value = Number(e.target.value);
+    if (value <= maxValue) {
+      setMinValue(value);
+    }
+  };
+
+  const handleMaxChange = (e) => {
+    const value = Number(e.target.value);
+    if (value >= minValue) {
+      setMaxValue(value);
+    }
+  };
 
   return (
     <div className="py-6">
@@ -461,16 +523,18 @@ const PriceRangeCard = ({
             min="1"
             max="10000"
             value={minValue}
-            onChange={(e) => setMinValue(Number(e.target.value))}
-            className="absolute w-full h-1 bg-gray-400 appearance-none"
+            onChange={handleMinChange}
+            className="absolute w-full h-1 bg-gray-400 appearance-none "
+            style={{ zIndex: minValue > maxValue - 100 ? "1" : "2" }}
           />
           <input
             type="range"
-            min="0"
-            max="10"
+            min="1"
+            max="10000"
             value={maxValue}
-            onChange={(e) => setMaxValue(Number(e.target.value))}
-            className="absolute w-full h-1 bg-transparent appearance-none"
+            onChange={handleMaxChange}
+            className="absolute w-full h-1 bg-transparent bg-gray-400 appearance-none z-10"
+            style={{ zIndex: minValue > maxValue - 100 ? "2" : "1 " }}
           />
         </div>
       </div>

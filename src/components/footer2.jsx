@@ -81,14 +81,14 @@ const Footer2 = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6 text-gray-800">Resources</h4>
+            <h4 className="text-lg font-bold mb-6 text-gray-800">About</h4>
             <ul className="space-y-4">
               <li>
                 <a
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Webinars
+                  Diamonds
                 </a>
               </li>
               <li>
@@ -96,10 +96,10 @@ const Footer2 = () => {
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Ebooks
+                  About us
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="/"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
@@ -114,7 +114,7 @@ const Footer2 = () => {
                 >
                   Tutorials
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 
