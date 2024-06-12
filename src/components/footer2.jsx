@@ -43,38 +43,32 @@ const Footer2 = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-6 text-gray-800">Services</h4>
+            <h4 className="text-lg font-bold mb-6 text-gray-800">
+              Quick Links
+            </h4>
             <ul className="space-y-4">
               <li>
                 <a
-                  href="/"
+                  href="/shop"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Web Development
+                  Shop
                 </a>
               </li>
               <li>
                 <a
-                  href="/"
+                  href="/contact-us"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  Mobile App Development
+                  Contact
                 </a>
               </li>
               <li>
                 <a
-                  href="/"
+                  href="/about"
                   className="text-gray-500 hover:text-gray-800 text-[15px]"
                 >
-                  UI/UX Design
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="text-gray-500 hover:text-gray-800 text-[15px]"
-                >
-                  Digital Marketing
+                  About
                 </a>
               </li>
             </ul>

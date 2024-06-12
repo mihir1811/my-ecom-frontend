@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Drawer from "./Drawer/Drawer";
 import { motion } from "framer-motion";
 import LOGO from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
   const userData = useSelector((data) => data.userData);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -23,10 +25,12 @@ const Header = () => {
           </div>
         </div>
         <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
-          <img
-            className="w-[80px] bg-transparent h-[80px] rounded-sm"
-            src={LOGO}
-          />
+          <a href="/">
+            <img
+              className="w-[80px] bg-transparent h-[80px] rounded-sm"
+              src={LOGO}
+            />
+          </a>
           <div>
             <ul className="flex items-center">
               <li className="mx-[10px] hover:text-black">
@@ -88,17 +92,26 @@ const Header = () => {
               <p className="mt-3">
                 <span>$1000</span> <del className="opacity-50">$1200</del>
               </p>
-              <div className="border border-[#ddd] flex items-center rounded-full h-[30px] w-[100px]">
-                <div className="w-full text-center bg-[#ddd] leading-[30px] rounded-s-full h-[30px]">
+              <div className="border border-[#ddd] flex items-center rounded-full w-[100px]">
+                <div className="w-full text-center bg-[#f5f5f5] leading-[30px] rounded-s-full h-[30px]">
                   +
                 </div>
                 <div className="w-full text-center bg-white">1</div>
-                <div className="w-full text-center bg-[#ddd] leading-[30px] rounded-e-full h-[30px]">
+                <div className="w-full text-center bg-[#f5f5f5] leading-[30px] rounded-e-full h-[30px]">
                   -
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="text-center">
+          <button
+            className="bg-[#f5f5f5] px-4 py-2 rounded-full"
+            onClick={() => navigate("/cart")}
+          >
+            View Cart
+          </button>
         </div>
       </Drawer>
       {/* ) : (

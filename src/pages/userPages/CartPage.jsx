@@ -16,7 +16,7 @@ const CartPage = () => {
       <Header />
 
       <section className="bg-[#f5f5f5]">
-        <div className="mx-auto max-w-[1320px] px-[20px]">
+        <div className="mx-auto max-w-[1350px] px-[20px]">
           <h1 className="text-[22px] font-bold">Shopping Bag</h1>
           <p>
             <b>2 items</b> in your bag
@@ -27,8 +27,8 @@ const CartPage = () => {
               <div className="flex justify-between w-full items-center">
                 <div className="flex">
                   <div>
-                    {/* <img /> */}
-                    <div className="bg-[#f5f5f5] rounded-md h-[120px] w-[120px] max-h-[150px] max-w-[150px]"></div>
+                    <img className="rounded-md h-[120px] w-[120px] max-h-[150px] max-w-[150px]" src="https://assets.catawiki.com/image/cw_ldp_l/plain/assets/catawiki/assets/2024/5/8/4/3/5/435dada1-c345-4a22-be08-72934709490e.jpg" />
+                    {/* <div className="bg-[#f5f5f5] rounded-md h-[120px] w-[120px] max-h-[150px] max-w-[150px]"></div> */}
                   </div>
                   <div className="ms-3">
                     <h3 className="font-semibold text-[20px]">product name</h3>
@@ -64,10 +64,15 @@ const CartPage = () => {
                 </div>
               </div>
             </div>
-            <div className="md:w-[30%] rounded-xl p-3 bg-white">
-              <button onClick={() => navigate("/checkout")}>
-                proceed to checkout
-              </button>
+            <div className="md:w-[30%] rounded-xl p-3 bg-white ">
+              <div className="p-2">
+                <button
+                  className="bg-[#f5f5f5] w-full rounded-full px-3 py-2"
+                  onClick={() => navigate("/checkout")}
+                >
+                  proceed to checkout
+                </button>
+              </div>
             </div>
           </div>
         </div>
