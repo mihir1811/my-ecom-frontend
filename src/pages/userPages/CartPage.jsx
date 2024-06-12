@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import Footer2 from "../../components/footer2";
 import { MdRemoveRedEye } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 import Header2 from "../../components/Header2";
 import Header from "../../components/Header";
 
 const CartPage = () => {
   const [value, setValue] = useState(1);
+  const navigate = useNavigate();
+
   return (
     <>
       <Header />
@@ -19,8 +22,8 @@ const CartPage = () => {
             <b>2 items</b> in your bag
           </p>
 
-          <div className="flex mt-4">
-            <div className="md:w-[69%] me-[1%] rounded-lg p-3 bg-white">
+          <div className="flex mt-4 flex-wrap">
+            <div className="md:w-[69%] me-[1%] rounded-xl p-3 bg-white">
               <div className="flex justify-between w-full items-center">
                 <div className="flex">
                   <div>
@@ -61,7 +64,11 @@ const CartPage = () => {
                 </div>
               </div>
             </div>
-            <div className="md:w-[30%] h-1 bg-white"></div>
+            <div className="md:w-[30%] rounded-xl p-3 bg-white">
+              <button onClick={() => navigate("/checkout")}>
+                proceed to checkout
+              </button>
+            </div>
           </div>
         </div>
       </section>
