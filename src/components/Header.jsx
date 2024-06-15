@@ -9,6 +9,7 @@ import LOGO from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { data } from "../../data";
 import UserAccountDropdown from "./UserAccountDropdown";
+import { GoHeart } from "react-icons/go";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,8 @@ const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate();
   const cartData = data.cart;
-
   const [isOpen, setIsOpen] = useState(false);
+
   const dropdownRef = useRef(null);
 
   const toggleDropdown = (event) => {
@@ -79,10 +80,25 @@ const Header = () => {
           {/* <UserAccountDropdown /> */}
 
           <div className="flex items-center">
+            <motion.div
+              onClick={()=> navigate("/favourites")}
+              className="relative cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <GoHeart size={30} />
+            </motion.div>
+
             {userData.profilePic ? (
-              <div ref={dropdownRef} className="relative">
-                <img
-                  className="w-[30px] h-[30px] rounded-full cursor-pointer mr-3"
+              <div ref={dropdownRef} className="relative mx-3">
+                <motion.img
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-[30px] h-[30px] rounded-full cursor-pointer"
                   src={userData?.profilePic}
                   onClick={toggleDropdown}
                 />
@@ -95,10 +111,13 @@ const Header = () => {
                       transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                       className="absolute z-10 origin-top-right right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200"
                     >
-                      <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
-                        Settings
+                      <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                        Profile
                       </li>
-                      <li className="block px-4 py-2 text-sm text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-md">
+                      <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                        Setting
+                      </li>
+                      <li className="block cursor-pointer px-4 py-2 text-sm text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-md">
                         Logout
                       </li>
                     </motion.ul>
@@ -106,13 +125,28 @@ const Header = () => {
                 </AnimatePresence>
               </div>
             ) : (
-              <PiUserCircle className="mr-3 cursor-pointer" size={30} />
+              // <motion.div className="relative cursor-pointer"  initial={{ opacity: 0, scale: 0 }}
+              // animate={{ opacity: 1, scale: 1 }}>
+
+              //   <PiUserCircle size={30} />
+              // </motion.div>
+              <motion.div
+                className="relative cursor-pointer mx-2"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <PiUserCircle size={30} />
+              </motion.div>
             )}
             <motion.div
               className="relative cursor-pointer"
               onClick={() => setIsCartOpen(true)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
             >
               <IoCartOutline size={30} />
               <span className="flex justify-center items-center h-[20px] w-[20px] absolute top-[-7px] right-[-7px] bg-blue-400 rounded-full">
@@ -123,7 +157,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* {isCartOpen ? ( */}
+      {/* {isCartOpen && ( */}
       <Drawer open={isCartOpen} onClose={() => setIsCartOpen(false)}>
         {/* hello add cart data */}
 
@@ -169,9 +203,7 @@ const Header = () => {
           </button>
         </div>
       </Drawer>
-      {/* ) : (
-        ""
-      )} */}
+      {/* )} */}
     </>
   );
 };

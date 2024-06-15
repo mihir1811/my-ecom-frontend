@@ -166,7 +166,8 @@ const DiamondFilters = () => {
 
       <ShapeSelection
         title="Stone Shape"
-        shapes={["All",
+        shapes={[
+          "All",
           "Round",
           "Pear",
           "Emerald",
@@ -177,10 +178,7 @@ const DiamondFilters = () => {
           "Cushion",
         ]}
       />
-      <ShapeSelection
-        title="Stone Type"
-        shapes={["All", "Lab", "Natural"]}
-      />
+      <ShapeSelection title="Stone Type" shapes={["All", "Lab", "Natural"]} />
       <ShapeSelection
         title="Cut Grade"
         shapes={["All", "Good", "Very Good", "Ideal", "True Hearts"]}
@@ -193,7 +191,6 @@ const DiamondFilters = () => {
         title="Flouresense"
         shapes={["None", "Faint", "Medium", "Strong", "Very Strong"]}
       />
-
 
       <div className="flex justify-center flex-wrap mt-5">
         <button className="bg-[#CFD9FF] px-10 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
