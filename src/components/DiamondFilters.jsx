@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import PriceRangeComp from "./RangeComponents/PriceRangeComp";
+import { motion } from "framer-motion";
 
 const DiamondFilters = () => {
   const [priceValue, setPriceValue] = useState(0);
@@ -145,12 +147,6 @@ const DiamondFilters = () => {
             Round{" "}
           </button>
           <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Pear
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
-            Emerald
-          </button>
-          <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
             Oval
           </button>
           <button className="bg-[#CFD9FF] text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
@@ -168,17 +164,42 @@ const DiamondFilters = () => {
         </div>
       </div> */}
 
-      <StoneShapes />
-      <StoneType />
-      <CutGrade />
-      <Clarity />
-      <Flouresense />
+      <ShapeSelection
+        title="Stone Shape"
+        shapes={["All",
+          "Round",
+          "Pear",
+          "Emerald",
+          "Oval",
+          "Heart",
+          "Marquise",
+          "Asscher",
+          "Cushion",
+        ]}
+      />
+      <ShapeSelection
+        title="Stone Type"
+        shapes={["All", "Lab", "Natural"]}
+      />
+      <ShapeSelection
+        title="Cut Grade"
+        shapes={["All", "Good", "Very Good", "Ideal", "True Hearts"]}
+      />
+      <ShapeSelection
+        title="Clarity"
+        shapes={["All", "1F", "WS1", "vs1", "vs2", "S11", "S12", "S13"]}
+      />
+      <ShapeSelection
+        title="Flouresense"
+        shapes={["None", "Faint", "Medium", "Strong", "Very Strong"]}
+      />
+
 
       <div className="flex justify-center flex-wrap mt-5">
-        <button className="bg-[#CFD9FF] px-4 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
+        <button className="bg-[#CFD9FF] px-10 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
           Find
         </button>
-        <button className="bg-[#CFD9FF] ms-2 px-4 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
+        <button className="bg-[#CFD9FF] ms-2 px-10 text-[#001858] rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer">
           Reset
         </button>
       </div>
@@ -188,15 +209,8 @@ const DiamondFilters = () => {
 
 export default DiamondFilters;
 
-const ReUsableComponent = ({
-  filterOptions,
-  selectedValues,
-  setSelectedValues,
-  title,
-}) => {
+const ShapeSelection = ({ title, shapes }) => {
   const [selectedShapes, setSelectedShapes] = useState([]);
-
-  const shapes = ["None", "Faint", "Medium", "Strong", "Very Strong"];
 
   const handleButtonClick = (shape) => {
     if (shape === "All") {
@@ -207,21 +221,26 @@ const ReUsableComponent = ({
       if (selectedShapes.includes("All")) {
         setSelectedShapes([shape]);
       } else {
-        setSelectedShapes((prevSelectedShapes) =>
-          prevSelectedShapes.includes(shape)
-            ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
-        );
+        const newSelectedShapes = selectedShapes.includes(shape)
+          ? selectedShapes.filter((s) => s !== shape)
+          : [...selectedShapes, shape];
+
+        // Check if all shapes except "All" are selected, then select "All"
+        if (newSelectedShapes.length === shapes.length - 1) {
+          setSelectedShapes(shapes);
+        } else {
+          setSelectedShapes(newSelectedShapes);
+        }
       }
     }
   };
 
   return (
     <div className="py-3">
-      <h4 className="font-rossa text-[24px]">Flouresense</h4>
+      <h4 className="font-rossa text-[24px]">{title}</h4>
       <div className="grid grid-cols-5 gap-5 mt-3">
         {shapes.map((shape) => (
-          <ShapeButton
+          <ShapeButton2
             key={shape}
             label={shape}
             isActive={selectedShapes.includes(shape)}
@@ -233,230 +252,19 @@ const ReUsableComponent = ({
   );
 };
 
-const Flouresense = () => {
-  const [selectedShapes, setSelectedShapes] = useState([]);
-
-  const shapes = ["None", "Faint", "Medium", "Strong", "Very Strong"];
-
-  const handleButtonClick = (shape) => {
-    if (shape === "All") {
-      selectedShapes.length > 0 && selectedShapes.includes("All")
-        ? setSelectedShapes([])
-        : setSelectedShapes(shapes);
-    } else {
-      if (selectedShapes.includes("All")) {
-        setSelectedShapes([shape]);
-      } else {
-        setSelectedShapes((prevSelectedShapes) =>
-          prevSelectedShapes.includes(shape)
-            ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
-        );
-      }
-    }
-  };
-
+const ShapeButton2 = ({ label, isActive, onClick }) => {
   return (
-    <div className="py-3">
-      <h4 className="font-rossa text-[24px]">Flouresense</h4>
-      <div className="grid grid-cols-5 gap-5 mt-3">
-        {shapes.map((shape) => (
-          <ShapeButton
-            key={shape}
-            label={shape}
-            isActive={selectedShapes.includes(shape)}
-            onClick={() => handleButtonClick(shape)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const Clarity = () => {
-  const [selectedShapes, setSelectedShapes] = useState([]);
-
-  const shapes = ["All", "1F", "WS1", "vs1", "vs2", "S11", "S12", "S13"];
-
-  const handleButtonClick = (shape) => {
-    if (shape === "All") {
-      selectedShapes.length > 0 && selectedShapes.includes("All")
-        ? setSelectedShapes([])
-        : setSelectedShapes(shapes);
-    } else {
-      if (selectedShapes.includes("All")) {
-        setSelectedShapes([shape]);
-      } else {
-        setSelectedShapes((prevSelectedShapes) =>
-          prevSelectedShapes.includes(shape)
-            ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
-        );
-      }
-    }
-  };
-
-  return (
-    <div className="py-3">
-      <h4 className="font-rossa text-[24px]">Clarity</h4>
-      <div className="grid grid-cols-5 gap-5 mt-3">
-        {shapes.map((shape) => (
-          <ShapeButton
-            key={shape}
-            label={shape}
-            isActive={selectedShapes.includes(shape)}
-            onClick={() => handleButtonClick(shape)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const CutGrade = () => {
-  const [selectedShapes, setSelectedShapes] = useState([]);
-
-  const shapes = ["All", "Good", "Very Good", "Ideal", "True Hearts"];
-
-  const handleButtonClick = (shape) => {
-    if (shape === "All") {
-      selectedShapes.length > 0 && selectedShapes.includes("All")
-        ? setSelectedShapes([])
-        : setSelectedShapes(shapes);
-    } else {
-      if (selectedShapes.includes("All")) {
-        setSelectedShapes([shape]);
-      } else {
-        setSelectedShapes((prevSelectedShapes) =>
-          prevSelectedShapes.includes(shape)
-            ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
-        );
-      }
-    }
-  };
-
-  return (
-    <div className="py-3">
-      <h4 className="font-rossa text-[24px]">Cut Grade</h4>
-      <div className="grid grid-cols-5 gap-5 mt-3">
-        {shapes.map((shape) => (
-          <ShapeButton
-            key={shape}
-            label={shape}
-            isActive={selectedShapes.includes(shape)}
-            onClick={() => handleButtonClick(shape)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const StoneShapes = () => {
-  const [selectedShapes, setSelectedShapes] = useState([]);
-
-  const shapes = [
-    "All",
-    "Round",
-    "Pear",
-    "Emerald",
-    "Oval",
-    "Heart",
-    "Marquise",
-    "Asscher",
-    "Cushion",
-  ];
-
-  const handleButtonClick = (shape) => {
-    if (shape === "All") {
-      selectedShapes.length > 0 && selectedShapes.includes("All")
-        ? setSelectedShapes([])
-        : setSelectedShapes(shapes);
-    } else {
-      if (selectedShapes.includes("All")) {
-        setSelectedShapes([shape]);
-      } else {
-        setSelectedShapes((prevSelectedShapes) =>
-          prevSelectedShapes.includes(shape)
-            ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
-        );
-      }
-    }
-  };
-
-  return (
-    <div className="py-3">
-      <h4 className="font-rossa text-[24px]">Stone Shape</h4>
-      <div className="grid grid-cols-5 gap-5 mt-3">
-        {shapes.map((shape) => (
-          <ShapeButton
-            key={shape}
-            label={shape}
-            isActive={selectedShapes.includes(shape)}
-            onClick={() => handleButtonClick(shape)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const StoneType = () => {
-  const [selectedShapes, setSelectedShapes] = useState([]);
-
-  const shapes = ["All", "Lab", "Natural"];
-
-  const handleButtonClick = (shape) => {
-    if (shape === "All") {
-      selectedShapes.length > 0 && selectedShapes.includes("All")
-        ? setSelectedShapes([])
-        : setSelectedShapes(shapes);
-    } else {
-      if (selectedShapes.includes("All")) {
-        setSelectedShapes([shape]);
-      } else {
-        setSelectedShapes((prevSelectedShapes) =>
-          prevSelectedShapes.includes(shape)
-            ? prevSelectedShapes.filter((s) => s !== shape)
-            : [...prevSelectedShapes, shape],
-        );
-      }
-    }
-  };
-
-  return (
-    <div className="py-3">
-      <h4 className="font-rossa text-[24px]">Stone Type</h4>
-      <div className="grid grid-cols-5 gap-5 mt-3">
-        {shapes.map((shape) => (
-          <ShapeButton
-            key={shape}
-            label={shape}
-            isActive={selectedShapes.includes(shape)}
-            onClick={() => handleButtonClick(shape)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const ShapeButton = ({ label, isActive, onClick }) => {
-  return (
-    <button
+    <motion.button
+      whileHover={{ scale: 0.97 }}
       className={`${
         isActive ? "bg-[#8FAAEE] text-white" : "bg-[#CFD9FF] text-[#001858]"
       } rounded-3xl py-2 text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer`}
       onClick={onClick}
     >
       {label}
-    </button>
+    </motion.button>
   );
 };
-
-// export default ShapeButton;
 
 const PriceRangeCard = ({
   title = "Price Range",

@@ -27,7 +27,10 @@ const CartPage = () => {
               <div className="flex justify-between w-full items-center">
                 <div className="flex">
                   <div>
-                    <img className="rounded-md h-[120px] w-[120px] max-h-[150px] max-w-[150px]" src="https://assets.catawiki.com/image/cw_ldp_l/plain/assets/catawiki/assets/2024/5/8/4/3/5/435dada1-c345-4a22-be08-72934709490e.jpg" />
+                    <img
+                      className="rounded-md h-[120px] w-[120px] max-h-[150px] max-w-[150px]"
+                      src="https://assets.catawiki.com/image/cw_ldp_l/plain/assets/catawiki/assets/2024/5/8/4/3/5/435dada1-c345-4a22-be08-72934709490e.jpg"
+                    />
                     {/* <div className="bg-[#f5f5f5] rounded-md h-[120px] w-[120px] max-h-[150px] max-w-[150px]"></div> */}
                   </div>
                   <div className="ms-3">

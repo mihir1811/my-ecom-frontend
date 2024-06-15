@@ -48,12 +48,12 @@ const Footer2 = () => {
             </h4>
             <ul className="space-y-4">
               <li>
-                <a
+                <motion.a
                   href="/shop"
-                  className="text-gray-500 hover:text-gray-800 text-[15px]"
+                  className="text-gray-500 hover: hover:text-gray-800 text-[15px]"
                 >
                   Shop
-                </a>
+                </motion.a>
               </li>
               <li>
                 <a

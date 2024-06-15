@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { PiUserCircle } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import Drawer from "./Drawer/Drawer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import LOGO from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import { data } from "../../data";
+import UserAccountDropdown from "./UserAccountDropdown";
 
 const Header = () => {
   const dispatch = useDispatch();
   const userData = useSelector((data) => data.userData);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate();
+  const cartData = data.cart;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = (event) => {
+    event.stopPropagation(); // Prevent document click from closing dropdown
+    setIsOpen(!isOpen);
+  };
+
+  const closeDropdown = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add click listener to close dropdown on document click (outside component)
+    document.addEventListener("click", closeDropdown);
+
+    return () => {
+      // Remove listener on component unmount
+      document.removeEventListener("click", closeDropdown);
+    };
+  }, []);
 
   return (
     <>
@@ -49,12 +76,35 @@ const Header = () => {
             </ul>
           </div>
 
+          {/* <UserAccountDropdown /> */}
+
           <div className="flex items-center">
             {userData.profilePic ? (
-              <img
-                className="w-[30px] h-[30px] rounded-full cursor-pointer mr-3"
-                src={userData?.profilePic}
-              />
+              <div ref={dropdownRef} className="relative">
+                <img
+                  className="w-[30px] h-[30px] rounded-full cursor-pointer mr-3"
+                  src={userData?.profilePic}
+                  onClick={toggleDropdown}
+                />
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.ul
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0 }}
+                      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                      className="absolute z-10 origin-top-right right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200"
+                    >
+                      <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                        Settings
+                      </li>
+                      <li className="block px-4 py-2 text-sm text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-md">
+                        Logout
+                      </li>
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </div>
             ) : (
               <PiUserCircle className="mr-3 cursor-pointer" size={30} />
             )}
@@ -76,34 +126,39 @@ const Header = () => {
       {/* {isCartOpen ? ( */}
       <Drawer open={isCartOpen} onClose={() => setIsCartOpen(false)}>
         {/* hello add cart data */}
-        <div className="flex p-2">
-          <div>
-            <img
-              src="https://cdn.trulyfreehome.com/ScentedLaundryWashJugRefill.jpg"
-              alt=""
-              className="w-[120px] rounded-md"
-            />
-          </div>
-          <div className="ms-3">
-            <p className="text-[15px]">
-              Laundry Wash - Signature Scent (50 loads)
-            </p>
-            <div>
-              <p className="mt-3">
-                <span>$1000</span> <del className="opacity-50">$1200</del>
-              </p>
-              <div className="border border-[#ddd] flex items-center rounded-full w-[100px]">
-                <div className="w-full text-center bg-[#f5f5f5] leading-[30px] rounded-s-full h-[30px]">
-                  +
-                </div>
-                <div className="w-full text-center bg-white">1</div>
-                <div className="w-full text-center bg-[#f5f5f5] leading-[30px] rounded-e-full h-[30px]">
-                  -
+
+        {cartData?.products?.map((data, index) => {
+          return (
+            <div key={index} className="flex p-2">
+              <div>
+                <img
+                  src="https://cdn.trulyfreehome.com/ScentedLaundryWashJugRefill.jpg"
+                  alt=""
+                  className="w-[120px] rounded-md"
+                />
+              </div>
+              <div className="ms-3">
+                <p className="text-[15px]">
+                  Laundry Wash - Signature Scent (50 loads)
+                </p>
+                <div>
+                  <p className="mt-3">
+                    <span>$1000</span> <del className="opacity-50">$1200</del>
+                  </p>
+                  <div className="border border-[#ddd] flex items-center rounded-full w-[100px]">
+                    <div className="w-full text-center bg-[#f5f5f5] leading-[30px] rounded-s-full h-[30px]">
+                      +
+                    </div>
+                    <div className="w-full text-center bg-white">1</div>
+                    <div className="w-full text-center bg-[#f5f5f5] leading-[30px] rounded-e-full h-[30px]">
+                      -
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
 
         <div className="text-center">
           <button

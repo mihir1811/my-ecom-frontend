@@ -30,7 +30,7 @@ const Drawer = ({ anchor = "right", open, onClose, children }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
-          opacity: open ? 0.5 : 0,
+          opacity: open ? 0.3 : 0,
           pointerEvents: open ? "auto" : "none",
         }}
         transition={{ duration: 0.3 }}
@@ -66,7 +66,7 @@ const Drawer = ({ anchor = "right", open, onClose, children }) => {
           {children}
         </motion.div>
       </motion.div>
-      <style jsx>{`
+      <style jsx="true">{`
         .overlay {
           position: fixed;
           top: 0;
