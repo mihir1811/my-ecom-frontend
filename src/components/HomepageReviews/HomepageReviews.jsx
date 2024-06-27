@@ -2,17 +2,17 @@ import React from "react";
 
 const HomepageReviews = () => {
   return (
-    <div className="mx-auto max-w-[1320px]  rounded-[30px] p-10 pt-0">
+    <div className="mx-auto max-w-[1320px] rounded-[30px] px-1 sm:px-10 pt-0">
       <h1 className="text-[#5877C7] text-[30px] text-center font-rossa mb-8">
         What Our Customers say about us ?
       </h1>
 
       <div>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-3 gap-6">
           <div className="bg-white rounded-full p-10 min-h-[600px] flex items-center flex-col justify-center">
             <div className="flex items-center mb-4">
               <img
-                className="h-[126px] w-[126px] rounded-[54px]"
+                className="h-[80px] w-[80px] sm:h-[126px] sm:w-[126px] rounded-[54px]"
                 src="https://pics.craiyon.com/2023-11-15/BcL2X-ZvT9ShA3Q5RQPjzg.webp"
               />
               <div className="ms-3 w-full">
@@ -31,7 +31,7 @@ const HomepageReviews = () => {
           <div className="bg-white rounded-full p-10 min-h-[600px] flex items-center flex-col justify-center">
             <div className="flex items-center mb-4">
               <img
-                className="h-[126px] w-[126px] rounded-[54px]"
+                className="h-[80px] w-[80px] sm:h-[126px] sm:w-[126px] rounded-[54px]"
                 src="https://pics.craiyon.com/2023-11-15/BcL2X-ZvT9ShA3Q5RQPjzg.webp"
               />
               <div className="ms-3 w-full">
@@ -50,7 +50,7 @@ const HomepageReviews = () => {
           <div className="bg-white rounded-full p-10 min-h-[600px] flex items-center flex-col justify-center">
             <div className="flex items-center mb-4">
               <img
-                className="h-[126px] w-[126px] rounded-[54px]"
+                className="h-[80px] w-[80px] sm:h-[126px] sm:w-[126px] rounded-[54px]"
                 src="https://pics.craiyon.com/2023-11-15/BcL2X-ZvT9ShA3Q5RQPjzg.webp"
               />
               <div className="ms-3 w-full">

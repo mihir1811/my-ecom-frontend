@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --thumb-size: 24px;
   --thumb-color: transparent;
 }
@@ -58,7 +58,7 @@ input[type="range"]::-ms-thumb {
 
   background-color: var(--thumb-color);
   pointer-events: auto;
-}
+}fi
 input[type="range"]:active::-webkit-slider-thumb {
   background-color: none;
 }
@@ -73,4 +73,4 @@ input[type="range"]:active::-moz-range-thumb {
 
 .rt90 {
   transform: rotate(90deg);
-}
+} */

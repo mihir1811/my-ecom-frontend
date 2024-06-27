@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { IoClose } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
-const Drawer = ({ anchor = "right", open, onClose, children }) => {
+const Drawer = ({ isMobileSize,anchor = "right", open, onClose, children }) => {
   const controls = useAnimation();
   const sidebarRef = useRef(null);
 
@@ -77,7 +78,7 @@ const Drawer = ({ anchor = "right", open, onClose, children }) => {
           z-index: 10;
         }
         .sidebar {
-          width: 400px;
+          width: ${isMobileSize ? "100%" : "400px"};
           background-color: lightgray;
           height: 100vh;
           position: fixed;

@@ -1,13 +1,11 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+
 
 /* @font-face {
-   font-family: 'Roxie Rossa';
-  src: url("./fonts//Roxie-Rossa-font_Toni-Studio_061222/Roxie\ rossa.ttf");
-} */
-
-@font-face {
   font-family: "Roxie Rossa";
   src: url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.eot");
   src:
@@ -21,10 +19,18 @@
       format("truetype"),
     url("https://db.onlinewebfonts.com/t/7b529b0b1b09edaa3ec964238d73afe3.svg#Roxie Rossa")
       format("svg");
+} */
+
+.cinzel-500 {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .font-rossa {
-  font-family: "Roxie Rossa";
+  /* font-family: "Roxie Rossa"; */
+  font-family: "Cinzel", serif;
 }
 
 :root {
@@ -75,3 +81,18 @@
 .slick-slide {
   padding: 0 10px;
 }
+
+
+
+/* ////////   product card css start */
+
+
+
+.productContent  .marketPrice{
+  text-decoration-line: line-through;
+    text-decoration-color: gray;
+    color:gray
+}
+
+
+/* ////////   product card css end */

@@ -25,7 +25,7 @@ const Homepage1 = () => {
       <section className="bg-[#f5f5f5] pt-10 px-[20px]">
         <HomepageReviews />
       </section>
-      <section className="bg-neutral-100">
+      <section className="bg-neutral-100 mt-5">
         <ExploreNow />
       </section>
 

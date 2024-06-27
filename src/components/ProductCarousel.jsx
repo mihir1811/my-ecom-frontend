@@ -31,6 +31,22 @@ const diamondShapes = [
     title: "Marquise",
     img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Marquise.jpg",
   },
+  {
+    title: "Princess",
+    img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Princess.jpg",
+  },
+  {
+    title: "Asscher",
+    img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Asscher.jpg",
+  },
+  {
+    title: "Cushion",
+    img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Cushion.jpg",
+  },
+  {
+    title: "Radiant",
+    img: "https://www.caratlane.com/skin/frontend/shopper/default/images/diamonds/Radiant.jpg",
+  },
 ];
 
 const ProductCarousel = () => {
@@ -114,7 +130,7 @@ const ProductCarousel = () => {
     <>
       <div className="relative">
         <div className="flex justify-between mx-auto max-w-[1420px] px-[20px]">
-          <div style={{ fontFamily: "Roxie Rossa", fontSize: "30px" }}>
+          <div className="font-rossa" style={{  fontSize: "30px" }}>
             Diamonds
           </div>
         </div>

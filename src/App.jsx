@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Toaster } from "react-hot-toast";
-import { useSelector } from "react-redux";
 import { setScreenSize } from "./redux/reducers/uiSlice";
 
 import Home from "./pages/userPages/Home";
@@ -12,11 +11,12 @@ import PageNotFound from "./pages/userPages/PageNotFound";
 import UserLogin from "./pages/userPages/authPages/UserLogin";
 import UserSignup from "./pages/userPages/authPages/UserSignup";
 import SellerDashboard from "./pages/sellerPages/SellerDashboard";
-import Products from "./pages/userPages/Products";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
 import "./App.css";
 import CartPage from "./pages/userPages/CartPage";
 import CheckOutPage from "./pages/userPages/CheckOutPage";
+import useRole from "./hooks/userRole";
+import Shop from "./pages/userPages/Shop";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,6 @@ const App = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    // Call handleResize to set the initial size
     handleResize();
 
     return () => {
@@ -47,20 +46,19 @@ const App = () => {
           <Route
             path="/"
             element={
-              <UserRoutes>
+              <ProtectedRoute role="USER">
                 <Home />
-              </UserRoutes>
+              </ProtectedRoute>
             }
           />
           <Route path="/login" element={<UserLogin />} />
           <Route path="/register" element={<UserSignup />} />
-
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/favourites" element={<CartPage />} />
           <Route path="/checkout" element={<CheckOutPage />} />
-          <Route path="/shop" element={<Products />} />
-          <Route path="/product/:id" element={<Products />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<Shop />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/my-orders" element={<h1>my orders page</h1>} />
           <Route
@@ -73,24 +71,23 @@ const App = () => {
           <Route
             path="/seller/dashboard"
             element={
-              // <SellerRoutes>
-              <SellerDashboard />
-              // </SellerRoutes>
+              <ProtectedRoute role="SELLER">
+                <SellerDashboard />
+              </ProtectedRoute>
             }
           />
           {/* Admin routes */}
           <Route
             path="/admin/dashboard"
             element={
-              <SuperAdminRoutes>
+              <ProtectedRoute role="ADMIN">
                 <SellerDashboard />
-              </SuperAdminRoutes>
+              </ProtectedRoute>
             }
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-
       <Toaster />
     </>
   );
@@ -98,27 +95,7 @@ const App = () => {
 
 export default App;
 
-const UserRoutes = ({ children }) => {
-  const currentUser = useSelector((data) => data?.userData?.userRole);
-  if (currentUser === "USER") {
-    return children;
-  }
-  return <PageNotFound />;
-};
-
-const SellerRoutes = ({ children }) => {
-  const currentUser = useSelector((data) => data?.userData?.userRole);
-  if (currentUser === "SELLER") {
-    return children;
-  }
-  return <PageNotFound />;
-};
-
-const SuperAdminRoutes = ({ children }) => {
-  const currentUser = useSelector((data) => data?.userData?.userRole);
-
-  if (currentUser === "ADMIN") {
-    return children;
-  }
-  return <PageNotFound />;
+const ProtectedRoute = ({ children, role }) => {
+  const hasRole = useRole(role);
+  return hasRole ? children : <PageNotFound />;
 };
