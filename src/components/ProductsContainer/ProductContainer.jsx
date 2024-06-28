@@ -3,10 +3,8 @@ import { productsList } from "../../../data";
 import { GoHeart } from "react-icons/go";
 
 
-const ProductContainer = ({ filters , products }) => {
-
-  console.log(products , "vdcscs")
-  const filteredProducts = products?.filter((product) => {
+const ProductContainer = ({ filters,products }) => {
+  const filteredProducts = products.filter((product) => {
     return (
       (filters.stoneType.length > 0 ? filters.stoneType.includes(product.stoneType) : true) &&
       (filters.price ? product.marketPrice >= filters.price[0] && product.marketPrice <= filters.price[1] : true) &&
