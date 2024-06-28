@@ -22,7 +22,7 @@ const Footer2 = () => {
               placeholder="Enter your email"
               className="w-full outline-none bg-transparent text-sm pl-4"
               name="email"
-              autocomplete="off"
+              autoComplete="off"
             />
             <button
               type="button"

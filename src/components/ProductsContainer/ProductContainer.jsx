@@ -1,8 +1,12 @@
 import React from "react";
 import { productsList } from "../../../data";
+import { GoHeart } from "react-icons/go";
 
-const ProductContainer = ({ filters }) => {
-  const filteredProducts = productsList.filter((product) => {
+
+const ProductContainer = ({ filters , products }) => {
+
+  console.log(products , "vdcscs")
+  const filteredProducts = products?.filter((product) => {
     return (
       (filters.stoneType.length > 0 ? filters.stoneType.includes(product.stoneType) : true) &&
       (filters.price ? product.marketPrice >= filters.price[0] && product.marketPrice <= filters.price[1] : true) &&
@@ -22,6 +26,7 @@ const ProductContainer = ({ filters }) => {
           <div className="productHeader flex overflow-hidden justify-center items-center">
             <img src={data?.productImgs[0]} className="w-full aspect-square rounded-sm group-hover:scale-125 duration-200" />
           </div>
+            <button className="absolute top-2 right-2 rounded-full bg-white p-1"><GoHeart size={20} /></button>
           <h6 className="p-2 pb-1 line-clamp-1">{data?.title}</h6>
           <div className="productContent flex items-center p-2">
             <p className="me-2 font-semibold">${data?.marketPrice}</p>
