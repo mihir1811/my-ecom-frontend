@@ -4,8 +4,8 @@ import userReducer from "./userslice";
 import storeReducer from "./storeSlice";
 
 const rootReducer = combineReducers({
-  ui: uiReducer,
   userData: userReducer,
+  ui: uiReducer,
   store: storeReducer,
 });
 

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import PriceRangeComp from "./RangeComponents/PriceRangeComp";
 import FilterSelection from "./filters/FilterSelection";
+import { filterOptions } from "../../filtersData";
 
 const DiamondFilters = () => {
   const [priceValue, setPriceValue] = useState(0);
   const [weightValue, setWeightValue] = useState(0);
   const [colorValue, setColourValue] = useState(0);
-  const [selectedColors , setSelectedColors] = useState([])
+  const [selectedColors, setSelectedColors] = useState([]);
   const [selectedShapes, setSelectedShapes] = useState([]);
-  const [selectedStoneTypes , setSelectedStoneTypes] = useState([])
-  const [selectedCutGrades , setSelectedCutGrades] = useState([])
-  const [selectedClarities , setSelectedClarities ] = useState([])
-  const [selectedFlouresense , setSelectedFlouresense] = useState([])
+  const [selectedStoneTypes, setSelectedStoneTypes] = useState([]);
+  const [selectedCutGrades, setSelectedCutGrades] = useState([]);
+  const [selectedClarities, setSelectedClarities] = useState([]);
+  const [selectedFlouresense, setSelectedFlouresense] = useState([]);
 
   return (
     <div className="mx-auto max-w-[1320px] bg-white rounded-[30px] sm:p-10 p-4">
@@ -69,7 +70,12 @@ const DiamondFilters = () => {
           </div> */}
         </div>
         <div className="relative sm:mb-6 mb-2">
-          <PriceRangeComp title="Carat" minValue={0} maxValue={12} isWeightSelect={true} />
+          <PriceRangeComp
+            title="Carat"
+            minValue={0}
+            maxValue={12}
+            isWeightSelect={true}
+          />
         </div>
         <div className="relative sm:mb-6 mb-2">
           {/* <PriceRangeComp title="Color" /> */}
@@ -78,34 +84,10 @@ const DiamondFilters = () => {
             <h3 className="font-rossa text-[24px] mb-3">Color</h3>
 
             <FilterSelection
-              shapes={[
-                "D",
-                "E",
-                "F",
-                "G",
-                "H",
-                "I",
-                "J",
-                "K",
-                "L",
-                "M",
-                "N",
-                "O",
-                "P",
-                "Q",
-                "R",
-                "S",
-                "T",
-                "U",
-                "V",
-                "W",
-                "X",
-                "Y",
-                "Z",
-              ]}
+              shapes={filterOptions.colors}
               isColorSelection={true}
               selectedShapes={selectedColors}
-        setSelectedShapes={setSelectedColors}
+              setSelectedShapes={setSelectedColors}
             />
           </div>
         </div>
@@ -141,40 +123,31 @@ const DiamondFilters = () => {
 
       <FilterSelection
         title="Stone Shape"
-        shapes={[
-          "All",
-          "Round",
-          "Pear",
-          "Emerald",
-          "Oval",
-          "Heart",
-          "Marquise",
-          "Asscher",
-          "Cushion",
-        ]}
+        shapes={["All" ,...filterOptions.shapes]}
         selectedShapes={selectedShapes}
         setSelectedShapes={setSelectedShapes}
       />
-      <FilterSelection 
-      title="Stone Type" 
-      shapes={["All", "Lab", "Natural"]} 
-      selectedShapes={selectedStoneTypes}
-        setSelectedShapes={setSelectedStoneTypes} />
+      <FilterSelection
+        title="Stone Type"
+        shapes={["All", ...filterOptions.stoneTypes]}
+        selectedShapes={selectedStoneTypes}
+        setSelectedShapes={setSelectedStoneTypes}
+      />
       <FilterSelection
         title="Cut Grade"
-        shapes={["All", "Good", "Very Good", "Ideal", "True Hearts"]}
+        shapes={["All", ...filterOptions.cutGrades]}
         selectedShapes={selectedCutGrades}
         setSelectedShapes={setSelectedCutGrades}
       />
       <FilterSelection
         title="Clarity"
-        shapes={["All", "1F", "WS1", "vs1", "vs2", "S11", "S12", "S13"]}
+        shapes={["All", ...filterOptions.clarities]}
         selectedShapes={selectedClarities}
         setSelectedShapes={setSelectedClarities}
       />
       <FilterSelection
         title="Flouresense"
-        shapes={["None", "Faint", "Medium", "Strong", "Very Strong"]}
+        shapes={filterOptions.fluorescences}
         selectedShapes={selectedFlouresense}
         setSelectedShapes={setSelectedFlouresense}
       />

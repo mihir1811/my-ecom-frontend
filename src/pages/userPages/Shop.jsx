@@ -1,135 +1,181 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Footer2 from "../../components/footer2";
 import ProductContainer from "../../components/ProductsContainer/ProductContainer";
-import PriceRangeComp from "../../components/RangeComponents/PriceRangeComp";
+import MultiSelectDropdown from "./MultiSelectDropdown";
+import { filterOptions } from "../../../filtersData";
+import SliderComponent from "../../components/SliderComponent";
 
 const Shop = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    stoneType: [],
+    price: [0, 1000],
+    shape: [],
+    color: [],
+    weight: [0, 10],
+    cutGrade: [],
+    clarity: [],
+    fluorescence: [],
+  });
+
+  const handleFilterChange = (name, value) => {
+    setFilters((prevFilters) => {
+      const isMultiSelect = Array.isArray(prevFilters[name]);
+
+      if (isMultiSelect) {
+        const newValue = prevFilters[name].includes(value)
+          ? prevFilters[name].filter((item) => item !== value)
+          : [...prevFilters[name], value];
+        console.log(name, newValue, "Multi-select filter updated");
+        return { ...prevFilters, [name]: newValue };
+      } else {
+        console.log(name, value, "Single value filter updated");
+        return { ...prevFilters, [name]: value };
+      }
+    });
+  };
+
+  const handleSliderChange = (name, value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [name]: value,
+    }));
+    console.log(name, value, "Slider filter updated");
+  };
+
+  useEffect(() => {
+    // Placeholder for fetching data from APIs
+    // fetchProducts();
+  }, [filters]);
+
+  const { stoneTypes, shapes, colors, cutGrades, clarities, fluorescences } = filterOptions;
+
   return (
     <div className="bg-[#f5f5f5]">
       <Header />
-{/*       
-      <div class="mx-auto">
-        <div class="flex flex-wrap mb-4" id="search">
-          <form
-            id="search-form"
-            action=""
-            method="POST"
-            enctype="multipart/form-data"
-            class="w-full flex"
-          >
-            <div class="form-group w-3/4 pr-2">
-              <input
-                class="form-control w-full px-4 py-2 border rounded"
-                type="text"
-                placeholder="Search"
-              />
-            </div>
-            <div class="form-group w-1/4 pl-2">
-              <button
-                type="submit"
-                class="btn w-full bg-blue-500 text-white py-2 rounded"
-              >
-                Search
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="flex flex-wrap mb-4" id="filter">
-          <form class="w-full flex flex-wrap">
-            <div class="form-group w-full sm:w-1/2 lg:w-1/4 p-2">
-              <select
-                data-filter="make"
-                class="filter-make filter form-control w-full px-4 py-2 border rounded"
-              >
-                <option value="">Select Make</option>
-                <option value="">Show All</option>
-              </select>
-            </div>
-            <div class="form-group w-full sm:w-1/2 lg:w-1/4 p-2">
-              <select
-                data-filter="model"
-                class="filter-model filter form-control w-full px-4 py-2 border rounded"
-              >
-                <option value="">Select Model</option>
-                <option value="">Show All</option>
-              </select>
-            </div>
-            <div class="form-group w-full sm:w-1/2 lg:w-1/4 p-2">
-              <select
-                data-filter="type"
-                class="filter-type filter form-control w-full px-4 py-2 border rounded"
-              >
-                <option value="">Select Type</option>
-                <option value="">Show All</option>
-              </select>
-            </div>
-            <div class="form-group w-full sm:w-1/2 lg:w-1/4 p-2">
-              <select
-                data-filter="price"
-                class="filter-price filter form-control w-full px-4 py-2 border rounded"
-              >
-                <option value="">Select Price Range</option>
-                <option value="">Show All</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="row" id="products"></div>
-      </div> */}
-
-      
-
       <div className="mx-auto max-w-[1340px] px-[20px]">
         <div className="flex my-5">
-          <div className="w-[300px]  bg-white rounded-[10px] p-3">
-            <h3 className="font-rossa text-gray-400  text-[22px] font-semibold">
+          <div className="w-[300px] productFilters bg-white h-max rounded-[10px] py-3 px-5">
+            <h3 className="font-rossa text-gray-400 text-[22px] font-semibold">
               Filters
             </h3>
-
-          <div>
-            <h3 className="title">Stone Type</h3>
-          </div>
-          <div>
-            {/* <h3 className="title">Price</h3> */}
-            <PriceRangeComp title="Price" minValue={0} maxValue={100} />
-          </div>
-          <div>
-            <h3 className="title">Shape</h3>
-          </div>
-          <div>
-            <h3 className="title">Color</h3>
-            
-          </div>
-          <div>
-            <h3 className="title">Shape</h3>
-          </div>
-          <div>
-            <h3 className="title">weight</h3>
-            <PriceRangeComp title="Carat" minValue={0} maxValue={12} isWeightSelect={true} />
-
-          </div>
-          <div>
-            <h3 className="title">Cut Grade</h3>
-          </div>
-          <div>
-            <h3 className="title">Clarity</h3>
-          </div>
-          <div>
-            <h3 className="title">Flouresense</h3>
-          </div>
+            <div>
+              <h3 className="filter-title">Stone Type</h3>
+              <MultiSelectDropdown
+                options={stoneTypes}
+                selectedValues={filters.stoneType}
+                onChange={(value) => handleFilterChange("stoneType", value)}
+                placeholder="Select Stone Type"
+              />
+            </div>
+            <SliderComponent
+              title="Price Range"
+              min={0}
+              max={1000}
+              value={filters.price}
+              onChange={(value) => handleSliderChange("price", value)}
+              unit="USD"
+            />
+            <div>
+              <h3 className="filter-title">Shape</h3>
+              <MultiSelectDropdown
+                options={shapes}
+                selectedValues={filters.shape}
+                onChange={(value) => handleFilterChange("shape", value)}
+                placeholder="Select Shape"
+              />
+            </div>
+            <div>
+              <h3 className="filter-title">Color</h3>
+              <MultiSelectDropdown
+                options={colors}
+                selectedValues={filters.color}
+                onChange={(value) => handleFilterChange("color", value)}
+                placeholder="Select Color"
+              />
+            </div>
+            <SliderComponent
+              title="Weight Range"
+              min={0}
+              max={10}
+              step={0.1}
+              value={filters.weight}
+              onChange={(value) => handleSliderChange("weight", value)}
+              unit="carats"
+            />
+            <div>
+              <h3 className="filter-title">Cut Grade</h3>
+              <MultiSelectDropdown
+                options={cutGrades}
+                selectedValues={filters.cutGrade}
+                onChange={(value) => handleFilterChange("cutGrade", value)}
+                placeholder="Select Cut Grade"
+              />
+            </div>
+            <div>
+              <h3 className="filter-title">Clarity</h3>
+              <MultiSelectDropdown
+                options={clarities}
+                selectedValues={filters.clarity}
+                onChange={(value) => handleFilterChange("clarity", value)}
+                placeholder="Select Clarity"
+              />
+            </div>
+            <div>
+              <h3 className="filter-title">Fluorescence</h3>
+              <MultiSelectDropdown
+                options={fluorescences}
+                selectedValues={filters.fluorescence}
+                onChange={(value) => handleFilterChange("fluorescence", value)}
+                placeholder="Select Fluorescence"
+              />
+            </div>
           </div>
           <div className="w-full ps-5">
-            <div className="b h-full rounded-[10px] w-full p-3">
-
-              <ProductContainer />
+            <div className="b h-full rounded-[10px] w-full p-3 pt-0">
+              <ProductContainer filters={filters} />
             </div>
           </div>
         </div>
       </div>
-
       <Footer2 />
+
+      <style jsx="true">
+        {`
+          .rc-slider-track, .rc-slider-tracks {
+            background-color: #001858;
+          }
+          .rc-slider-handle {
+            border: solid 2px #001858;
+            opacity: 1;
+          }
+          .filter-title {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-family: "Cinzel", serif;
+          }
+          .selected-options {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .selected-option {
+            background: #e0e0e0;
+            border-radius: 3px;
+            padding: 5px;
+            margin: 2px;
+            display: flex;
+            align-items: center;
+          }
+          .remove-btn {
+            margin-left: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+          }
+        `}
+      </style>
     </div>
   );
 };
