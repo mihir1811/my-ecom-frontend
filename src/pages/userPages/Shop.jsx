@@ -1,6 +1,5 @@
 // Shop.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Header from "../../components/Header";
 import Footer2 from "../../components/footer2";
 import ProductContainer from "../../components/ProductsContainer/ProductContainer";
@@ -21,32 +20,7 @@ const Shop = () => {
     fluorescence: [],
   });
 
-  const [products, setProducts] = useState(productsList);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [limit] = useState(10);
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const response = await axios.get('http://localhost:5000/api/products', {
-  //         params: { page, limit },
-  //       });
-  //       console.log(response, "recdcd")
-  //       setProducts(response?.data?.data);
-  //       setTotal(response?.data?.total);
-  //     } catch (err) {
-  //       setError(err?.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchProducts();
-  // }, [page, limit]);
 
   const handleFilterChange = (name, value) => {
     setFilters((prevFilters) => {
@@ -70,13 +44,8 @@ const Shop = () => {
     }));
   };
 
-  const handlePageChange = (newPage) => {
-    if (newPage > 0 && newPage <= Math.ceil(total / limit)) {
-      setPage(newPage);
-    }
-  };
 
-  if (loading) return <div>Loading...</div>;
+
   return (
     <>
       <div className="bg-[#f5f5f5]">
@@ -169,34 +138,7 @@ const Shop = () => {
             </div>
             <div className="w-full ps-5">
               <div className="b h-full rounded-[10px] w-full p-3 pt-0">
-                <ProductContainer filters={filters} products={products} />
-                <div className="pagination">
-                  <button
-                    className="disabled:opacity-80"
-                    disabled={!(page > 1)}
-                    onClick={() => handlePageChange(page - 1)}
-                  >
-                    Previous
-                  </button>
-                  {[...Array(Math.ceil(total / limit)).keys()].map((num) => (
-                    <button
-                      key={num}
-                      onClick={() => handlePageChange(num + 1)}
-                      className={page === num + 1 ? "active" : ""}
-                    >
-                      {num + 1}
-                    </button>
-                  ))}
-                  {/* {page < Math.ceil(total / limit) && ( */}
-                  <button
-                    className="disabled:opacity-80"
-                    disabled={!(page < Math.ceil(total / limit))}
-                    onClick={() => handlePageChange(page + 1)}
-                  >
-                    Next
-                  </button>
-                  {/* )} */}
-                </div>
+                <ProductContainer filters={filters} products={productsList} />
               </div>
             </div>
           </div>
@@ -217,6 +159,7 @@ const Shop = () => {
             margin-top: 20px;
             margin-bottom: 8px;
             font-family: "Cinzel", serif;
+            font-weight:500;
           }
           .selected-options {
             margin-top: 10px;
@@ -225,8 +168,8 @@ const Shop = () => {
           }
           .selected-option {
             background: #e0e0e0;
-            border-radius: 3px;
-            padding: 5px;
+            border-radius: 5px;
+            padding: 5px 10px;
             margin: 2px;
             display: flex;
             align-items: center;

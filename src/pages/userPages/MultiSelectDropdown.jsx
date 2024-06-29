@@ -1,6 +1,8 @@
 import React from "react";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import { MdCancel } from "react-icons/md";
+
 
 const MultiSelectDropdown = ({
   options,
@@ -21,10 +23,10 @@ const MultiSelectDropdown = ({
       />
       <div className="selected-options">
         {selectedValues.map((value, index) => (
-          <span key={index} className="selected-option">
+          <span key={index} className="selected-option flex items-center">
             {value}
             <button onClick={() => onChange(value)} className="remove-btn">
-              x
+              <MdCancel size={18} />
             </button>
           </span>
         ))}

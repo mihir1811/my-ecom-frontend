@@ -86,19 +86,55 @@ const Header = () => {
             <div>
               <ul className="flex items-center">
                 <li className="mx-[10px] hover:text-black">
-                  <a href="/">Home</a>
+                  <motion.div
+                    onClick={() => navigate("/")}
+                    className="relative cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    Home
+                  </motion.div>
                 </li>
                 <li className="mx-[10px]">
-                  <a href="/shop">Shop</a>
+                <motion.div
+                    onClick={() => navigate("/shop")}
+                    className="relative cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    Shop
+                  </motion.div>
                 </li>
                 {/* <li className="mx-[10px]">
                     <a href="/trades">Live Trades</a>
                   </li> */}
                 <li className="mx-[10px]">
-                  <a href="/about">About Us</a>
+                <motion.div
+                    onClick={() => navigate("/about")}
+                    className="relative cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    About Us
+                  </motion.div>
                 </li>
                 <li className="mx-[10px]">
-                  <a href="/contact-us">Contact Us</a>
+                <motion.div
+                    onClick={() => navigate("/contact-us")}
+                    className="relative cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  >
+                    Contact Us
+                  </motion.div>
                 </li>
               </ul>
             </div>
