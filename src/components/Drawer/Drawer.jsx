@@ -3,7 +3,13 @@ import { motion, useAnimation } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
-const Drawer = ({ isMobileSize,anchor = "right", open, onClose, children }) => {
+const Drawer = ({
+  isMobileSize,
+  anchor = "right",
+  open,
+  onClose,
+  children,
+}) => {
   const controls = useAnimation();
   const sidebarRef = useRef(null);
 

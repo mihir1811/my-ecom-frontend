@@ -17,6 +17,7 @@ import CartPage from "./pages/userPages/CartPage";
 import CheckOutPage from "./pages/userPages/CheckOutPage";
 import useRole from "./hooks/userRole";
 import Shop from "./pages/userPages/Shop";
+import FavouritesPage from "./pages/userPages/FavouritesPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ const App = () => {
           <Route path="/register" element={<UserSignup />} />
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/favourites" element={<CartPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
           <Route path="/checkout" element={<CheckOutPage />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<Shop />} />

@@ -130,7 +130,7 @@ const ProductCarousel = () => {
     <>
       <div className="relative">
         <div className="flex justify-between mx-auto max-w-[1420px] px-[20px]">
-          <div className="font-rossa" style={{  fontSize: "30px" }}>
+          <div className="font-rossa" style={{ fontSize: "30px" }}>
             Diamonds
           </div>
         </div>
