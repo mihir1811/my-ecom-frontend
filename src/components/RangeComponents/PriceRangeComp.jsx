@@ -14,7 +14,6 @@ const PriceRangeComp = ({
       ? parseFloat(event.target.value)
       : parseInt(event.target.value, 10);
 
-
     if (newValueA <= valueB && newValueA <= maxValue) {
       setValueA(newValueA);
     }
@@ -24,9 +23,9 @@ const PriceRangeComp = ({
     const newValueB = isWeightSelect
       ? parseFloat(event.target.value)
       : parseInt(event.target.value, 10);
-      if (newValueB >= valueA && newValueB <= maxValue) {
-        setValueB(newValueB);
-      } 
+    if (newValueB >= valueA && newValueB <= maxValue) {
+      setValueB(newValueB);
+    }
   };
 
   return (
@@ -89,7 +88,7 @@ const PriceRangeComp = ({
               value={valueB}
               placeholder="0"
               onChange={handleChangeB}
-              step={ isWeightSelect  ? "0.1" : "1"}
+              step={isWeightSelect ? "0.1" : "1"}
               min={minValue}
               max={maxValue}
             />

@@ -1,9 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
 
 /* @font-face {
   font-family: "Roxie Rossa";
@@ -82,17 +80,12 @@
   padding: 0 10px;
 }
 
-
-
 /* ////////   product card css start */
 
-
-
-.productContent  .marketPrice{
+.productContent .marketPrice {
   text-decoration-line: line-through;
-    text-decoration-color: gray;
-    color:gray
+  text-decoration-color: gray;
+  color: gray;
 }
-
 
 /* ////////   product card css end */

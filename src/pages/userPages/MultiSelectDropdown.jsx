@@ -1,8 +1,13 @@
-import React from 'react';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+import React from "react";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
-const MultiSelectDropdown = ({ options, selectedValues, onChange, placeholder }) => {
+const MultiSelectDropdown = ({
+  options,
+  selectedValues,
+  onChange,
+  placeholder,
+}) => {
   const handleSelect = (option) => {
     onChange(option.value);
   };
@@ -18,7 +23,9 @@ const MultiSelectDropdown = ({ options, selectedValues, onChange, placeholder })
         {selectedValues.map((value, index) => (
           <span key={index} className="selected-option">
             {value}
-            <button onClick={() => onChange(value)} className="remove-btn">x</button>
+            <button onClick={() => onChange(value)} className="remove-btn">
+              x
+            </button>
           </span>
         ))}
       </div>

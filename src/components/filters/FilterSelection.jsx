@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 
-const FilterSelection = ({ title, shapes, isColorSelection = false, selectedShapes, setSelectedShapes }) => {
+const FilterSelection = ({
+  title,
+  shapes,
+  isColorSelection = false,
+  selectedShapes,
+  setSelectedShapes,
+}) => {
   const handleButtonClick = (shape) => {
     if (shape === "All") {
       selectedShapes.length > 0 && selectedShapes.includes("All")
@@ -63,7 +69,7 @@ const ShapeButton2 = ({ label, isActive, onClick, isColorSelection }) => {
       whileHover={{ scale: 0.97 }}
       className={`${
         isActive ? "bg-[#8FAAEE] text-white" : "bg-[#CFD9FF] text-[#001858]"
-      }  py-2 ${isColorSelection ? "h-[30px] w-[30px] flex justify-center items-center":"rounded-3xl"} text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer`}
+      }  py-2 ${isColorSelection ? "h-[30px] w-[30px] flex justify-center items-center" : "rounded-3xl"} text-center hover:bg-[#8FAAEE] hover:text-white cursor-pointer`}
       onClick={onClick}
     >
       {label}

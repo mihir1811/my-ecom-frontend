@@ -8,8 +8,9 @@ import MultiSelectDropdown from "./MultiSelectDropdown";
 import SliderComponent from "../../components/SliderComponent";
 import { filterOptions } from "../../../filtersData";
 import { productsList } from "../../../data";
+import { useSelector } from "react-redux";
 
-const Shop = () => {
+const FavouritesPage = () => {
   const [filters, setFilters] = useState({
     stoneType: [],
     price: [0, 1000],
@@ -20,6 +21,9 @@ const Shop = () => {
     clarity: [],
     fluorescence: [],
   });
+  const favouriteProducts = useSelector((data)=> data?.favorites?.favorites)
+
+  console.log(favouriteProducts , "wefewdewdewd")
 
   const [products, setProducts] = useState(productsList);
   const [loading, setLoading] = useState(false);
@@ -83,94 +87,10 @@ const Shop = () => {
         <Header />
         <div className="mx-auto max-w-[1340px] px-[20px]">
           <div className="flex my-5">
-            <div className="w-[300px] productFilters bg-white h-max rounded-[10px] p-3">
-              <h3 className="font-rossa text-gray-400 text-[22px] font-semibold">
-                Filters
-              </h3>
-              <div>
-                <h3 className="filter-title">Stone Type</h3>
-                <MultiSelectDropdown
-                  options={filterOptions.stoneTypes}
-                  selectedValues={filters.stoneType}
-                  onChange={(value) => handleFilterChange("stoneType", value)}
-                  placeholder="Select Stone Type"
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">
-                  Price Range: ${filters.price[0]} - ${filters.price[1]}
-                </h3>
-                <SliderComponent
-                  min={0}
-                  max={1000}
-                  value={filters.price}
-                  onChange={(value) => handleSliderChange("price", value)}
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">Shape</h3>
-                <MultiSelectDropdown
-                  options={filterOptions.shapes}
-                  selectedValues={filters.shape}
-                  onChange={(value) => handleFilterChange("shape", value)}
-                  placeholder="Select Shape"
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">Color</h3>
-                <MultiSelectDropdown
-                  options={filterOptions.colors}
-                  selectedValues={filters.color}
-                  onChange={(value) => handleFilterChange("color", value)}
-                  placeholder="Select Color"
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">
-                  Weight Range: {filters.weight[0]} - {filters.weight[1]} carats
-                </h3>
-                <SliderComponent
-                  min={0}
-                  max={10}
-                  step={0.1}
-                  value={filters.weight}
-                  onChange={(value) => handleSliderChange("weight", value)}
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">Cut Grade</h3>
-                <MultiSelectDropdown
-                  options={filterOptions.cutGrades}
-                  selectedValues={filters.cutGrade}
-                  onChange={(value) => handleFilterChange("cutGrade", value)}
-                  placeholder="Select Cut Grade"
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">Clarity</h3>
-                <MultiSelectDropdown
-                  options={filterOptions.clarities}
-                  selectedValues={filters.clarity}
-                  onChange={(value) => handleFilterChange("clarity", value)}
-                  placeholder="Select Clarity"
-                />
-              </div>
-              <div>
-                <h3 className="filter-title">Fluorescence</h3>
-                <MultiSelectDropdown
-                  options={filterOptions.fluorescences}
-                  selectedValues={filters.fluorescence}
-                  onChange={(value) =>
-                    handleFilterChange("fluorescence", value)
-                  }
-                  placeholder="Select Fluorescence"
-                />
-              </div>
-            </div>
             <div className="w-full ps-5">
               <div className="b h-full rounded-[10px] w-full p-3 pt-0">
-                <ProductContainer filters={filters} products={products} />
-                <div className="pagination">
+                <ProductContainer filters={filters} products={favouriteProducts} isFavouritesPage={true} />
+                {/* <div className="pagination">
                   <button
                     className="disabled:opacity-80"
                     disabled={!(page > 1)}
@@ -187,7 +107,7 @@ const Shop = () => {
                       {num + 1}
                     </button>
                   ))}
-                  {/* {page < Math.ceil(total / limit) && ( */}
+                  {page < Math.ceil(total / limit) && (
                   <button
                     className="disabled:opacity-80"
                     disabled={!(page < Math.ceil(total / limit))}
@@ -195,8 +115,8 @@ const Shop = () => {
                   >
                     Next
                   </button>
-                  {/* )} */}
-                </div>
+                  )} 
+                </div> */}
               </div>
             </div>
           </div>
@@ -262,4 +182,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default FavouritesPage;

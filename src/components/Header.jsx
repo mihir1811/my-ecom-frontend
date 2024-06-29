@@ -12,7 +12,6 @@ import UserAccountDropdown from "./UserAccountDropdown";
 import { GoHeart } from "react-icons/go";
 import { FaBars } from "react-icons/fa6";
 
-
 const Header = () => {
   const dispatch = useDispatch();
   const userData = useSelector((data) => data.userData);
@@ -21,8 +20,7 @@ const Header = () => {
   const navigate = useNavigate();
   const cartData = data.cart;
   const [isOpen, setIsOpen] = useState(false);
-  const screenSize = useSelector((data) => data?.ui?.screenSize?.width)
-
+  const screenSize = useSelector((data) => data?.ui?.screenSize?.width);
 
   const dropdownRef = useRef(null);
 
@@ -58,132 +56,134 @@ const Header = () => {
           </div>
         </div>
 
-        {
-          screenSize <= 650 ?
-            <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
-              <a href="/">
-                <img
-                  className="w-[80px] bg-transparent h-[80px] rounded-sm"
-                  src={LOGO}
-                />
-              </a>
-              <motion.div
-                  onClick={() => setIsSidebarOpen(true)}
-                  className="relative cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                >
-                  <FaBars size={30} />
-                </motion.div>
-            </div>
-            :
-            <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
-              <a href="/">
-                <img
-                  className="w-[80px] bg-transparent h-[80px] rounded-sm"
-                  src={LOGO}
-                />
-              </a>
-              <div>
-                <ul className="flex items-center">
-                  <li className="mx-[10px] hover:text-black">
-                    <a href="/">Home</a>
-                  </li>
-                  <li className="mx-[10px]">
-                    <a href="/shop">Shop</a>
-                  </li>
-                  {/* <li className="mx-[10px]">
+        {screenSize <= 650 ? (
+          <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
+            <a href="/">
+              <img
+                className="w-[80px] bg-transparent h-[80px] rounded-sm"
+                src={LOGO}
+              />
+            </a>
+            <motion.div
+              onClick={() => setIsSidebarOpen(true)}
+              className="relative cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <FaBars size={30} />
+            </motion.div>
+          </div>
+        ) : (
+          <div className="mx-auto max-w-[1350px] px-[20px] py-4 flex items-center justify-between">
+            <a href="/">
+              <img
+                className="w-[80px] bg-transparent h-[80px] rounded-sm"
+                src={LOGO}
+              />
+            </a>
+            <div>
+              <ul className="flex items-center">
+                <li className="mx-[10px] hover:text-black">
+                  <a href="/">Home</a>
+                </li>
+                <li className="mx-[10px]">
+                  <a href="/shop">Shop</a>
+                </li>
+                {/* <li className="mx-[10px]">
                     <a href="/trades">Live Trades</a>
                   </li> */}
-                  <li className="mx-[10px]">
-                    <a href="/about">About Us</a>
-                  </li>
-                  <li className="mx-[10px]">
-                    <a href="/contact-us">Contact Us</a>
-                  </li>
-                </ul>
-              </div>
+                <li className="mx-[10px]">
+                  <a href="/about">About Us</a>
+                </li>
+                <li className="mx-[10px]">
+                  <a href="/contact-us">Contact Us</a>
+                </li>
+              </ul>
+            </div>
 
-              {/* <UserAccountDropdown /> */}
+            {/* <UserAccountDropdown /> */}
 
-              <div className="flex items-center">
-                <motion.div
-                  onClick={() => navigate("/favourites")}
-                  className="relative cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                >
-                  <GoHeart size={30} />
-                </motion.div>
+            <div className="flex items-center">
+              <motion.div
+                onClick={() => navigate("/favourites")}
+                className="relative cursor-pointer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <GoHeart size={30} />
+              </motion.div>
 
-                {userData.profilePic ? (
-                  <div ref={dropdownRef} className="relative mx-3">
-                    <motion.img
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="w-[30px] h-[30px] rounded-full cursor-pointer"
-                      src={userData?.profilePic}
-                      onClick={toggleDropdown}
-                    />
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.ul
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0 }}
-                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-                          className="absolute z-10 origin-top-right right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200"
-                        >
-                          <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
-                            Profile
-                          </li>
-                          <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
-                            Setting
-                          </li>
-                          <li className="block cursor-pointer px-4 py-2 text-sm text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-md">
-                            Logout
-                          </li>
-                        </motion.ul>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ) : (
-                  <motion.div
-                    className="relative cursor-pointer mx-2"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+              {userData.profilePic ? (
+                <div ref={dropdownRef} className="relative mx-3">
+                  <motion.img
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                  >
-                    <PiUserCircle size={30} />
-                  </motion.div>
-                )}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-[30px] h-[30px] rounded-full cursor-pointer"
+                    src={userData?.profilePic}
+                    onClick={toggleDropdown}
+                  />
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.ul
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0 }}
+                        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                        className="absolute z-10 origin-top-right right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200"
+                      >
+                        <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                          Profile
+                        </li>
+                        <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                          Setting
+                        </li>
+                        <li className="block cursor-pointer px-4 py-2 text-sm text-red-500 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded-md">
+                          Logout
+                        </li>
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
                 <motion.div
-                  className="relative cursor-pointer"
-                  onClick={() => setIsCartOpen(true)}
+                  className="relative cursor-pointer mx-2"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                 >
-                  <IoCartOutline size={30} />
-                  <span className="flex justify-center items-center h-[20px] w-[20px] absolute top-[-7px] right-[-7px] bg-blue-400 rounded-full">
-                    1
-                  </span>
+                  <PiUserCircle size={30} />
                 </motion.div>
-              </div>
+              )}
+              <motion.div
+                className="relative cursor-pointer"
+                onClick={() => setIsCartOpen(true)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <IoCartOutline size={30} />
+                <span className="flex justify-center items-center h-[20px] w-[20px] absolute top-[-7px] right-[-7px] bg-blue-400 rounded-full">
+                  1
+                </span>
+              </motion.div>
             </div>
-        }
-
+          </div>
+        )}
       </div>
 
-      <Drawer isMobileSize={screenSize <= 650} open={isCartOpen} onClose={() => setIsCartOpen(false)}>
+      <Drawer
+        isMobileSize={screenSize <= 650}
+        open={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+      >
         {/* hello add cart data */}
 
         {cartData?.products?.map((data, index) => {
@@ -229,11 +229,13 @@ const Header = () => {
         </div>
       </Drawer>
 
-
-      <Drawer isMobileSize={screenSize <= 650} open={isSidebarOpen} onClose={() => setIsSidebarOpen(false)}>
+      <Drawer
+        isMobileSize={screenSize <= 650}
+        open={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      >
         hiii
       </Drawer>
-
     </>
   );
 };

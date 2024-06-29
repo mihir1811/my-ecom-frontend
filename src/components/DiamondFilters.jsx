@@ -123,7 +123,7 @@ const DiamondFilters = () => {
 
       <FilterSelection
         title="Stone Shape"
-        shapes={["All" ,...filterOptions.shapes]}
+        shapes={["All", ...filterOptions.shapes]}
         selectedShapes={selectedShapes}
         setSelectedShapes={setSelectedShapes}
       />
