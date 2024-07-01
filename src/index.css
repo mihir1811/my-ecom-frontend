@@ -89,3 +89,32 @@
 }
 
 /* ////////   product card css end */
+
+/* sidebar css */
+
+.openBar {
+  /* position:absolute ; */
+  /* left:0% ; */
+  bottom: 6px;
+  border: none;
+  background-color: #f5f5f5;
+  color: black;
+  /* border-radius:0px 0px 48px 48px ; */
+  width: 250px;
+  transition: all 0.5s ease-in-out;
+  z-index: 501;
+}
+
+.closeBar {
+  /* position:absolute ; */
+  left: -100%;
+  /* margin-bottom:-24px ; */
+  /* bottom:0 ; */
+  border: none;
+  background-color: #22262c;
+  color: white;
+  /* border-radius:48px 48px 0px 0px ; */
+  /* width:50px; */
+  transition: all 0.5s ease-in-out;
+  z-index: 501;
+}

@@ -44,8 +44,6 @@ const Shop = () => {
     }));
   };
 
-
-
   return (
     <>
       <div className="bg-[#f5f5f5]">
@@ -159,7 +157,7 @@ const Shop = () => {
             margin-top: 20px;
             margin-bottom: 8px;
             font-family: "Cinzel", serif;
-            font-weight:500;
+            font-weight: 500;
           }
           .selected-options {
             margin-top: 10px;

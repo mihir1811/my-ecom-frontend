@@ -21,9 +21,9 @@ const FavouritesPage = () => {
     clarity: [],
     fluorescence: [],
   });
-  const favouriteProducts = useSelector((data)=> data?.favorites?.favorites)
+  const favouriteProducts = useSelector((data) => data?.favorites?.favorites);
 
-  console.log(favouriteProducts , "wefewdewdewd")
+  console.log(favouriteProducts, "wefewdewdewd");
 
   const [products, setProducts] = useState(productsList);
   const [loading, setLoading] = useState(false);
@@ -89,7 +89,11 @@ const FavouritesPage = () => {
           <div className="flex my-5">
             <div className="w-full ps-5">
               <div className="b h-full rounded-[10px] w-full p-3 pt-0">
-                <ProductContainer filters={filters} products={favouriteProducts} isFavouritesPage={true} />
+                <ProductContainer
+                  filters={filters}
+                  products={favouriteProducts}
+                  isFavouritesPage={true}
+                />
                 {/* <div className="pagination">
                   <button
                     className="disabled:opacity-80"

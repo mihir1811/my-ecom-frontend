@@ -98,7 +98,7 @@ const Header = () => {
                   </motion.div>
                 </li>
                 <li className="mx-[10px]">
-                <motion.div
+                  <motion.div
                     onClick={() => navigate("/shop")}
                     className="relative cursor-pointer"
                     whileHover={{ scale: 1.1 }}
@@ -113,7 +113,7 @@ const Header = () => {
                     <a href="/trades">Live Trades</a>
                   </li> */}
                 <li className="mx-[10px]">
-                <motion.div
+                  <motion.div
                     onClick={() => navigate("/about")}
                     className="relative cursor-pointer"
                     whileHover={{ scale: 1.1 }}
@@ -125,7 +125,7 @@ const Header = () => {
                   </motion.div>
                 </li>
                 <li className="mx-[10px]">
-                <motion.div
+                  <motion.div
                     onClick={() => navigate("/contact-us")}
                     className="relative cursor-pointer"
                     whileHover={{ scale: 1.1 }}

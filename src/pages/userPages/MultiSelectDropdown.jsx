@@ -3,7 +3,6 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { MdCancel } from "react-icons/md";
 
-
 const MultiSelectDropdown = ({
   options,
   selectedValues,

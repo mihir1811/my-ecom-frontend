@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addFavorite , removeFavorite } from "../../redux/reducers/favoriteProductsSlice";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../../redux/reducers/favoriteProductsSlice";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 
-const ProductContainer = ({ filters, products , isFavouritesPage=false }) => {
+const ProductContainer = ({ filters, products, isFavouritesPage = false }) => {
   const dispatch = useDispatch();
   const favoriteProducts = useSelector((state) => state.favorites.favorites);
 
@@ -40,7 +43,7 @@ const ProductContainer = ({ filters, products , isFavouritesPage=false }) => {
 
   const handleAddToFavorites = (product) => {
     const isFavorite = favoriteProducts.some(
-      (favProduct) => favProduct._id === product._id
+      (favProduct) => favProduct._id === product._id,
     );
 
     if (isFavorite) {
@@ -51,7 +54,9 @@ const ProductContainer = ({ filters, products , isFavouritesPage=false }) => {
   };
 
   return (
-    <div className={`productList ${isFavouritesPage ?  "sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" : "sm:grid-cols-3"} grid grid-cols-2 gap-3 gap-y-4`}>
+    <div
+      className={`productList ${isFavouritesPage ? "sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" : "sm:grid-cols-3"} grid grid-cols-2 gap-3 gap-y-4`}
+    >
       {filteredProducts.map((data, index) => (
         <div key={index} className="productCard bg-white relative group">
           <div className="productHeader flex overflow-hidden justify-center items-center">
@@ -65,7 +70,7 @@ const ProductContainer = ({ filters, products , isFavouritesPage=false }) => {
             onClick={() => handleAddToFavorites(data)}
           >
             {favoriteProducts.some(
-              (favProduct) => favProduct._id === data._id
+              (favProduct) => favProduct._id === data._id,
             ) ? (
               <GoHeartFill size={20} color="red" />
             ) : (
