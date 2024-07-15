@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 const Sidebar = () => {
@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`sidebar ${isSidebarOpen ? 'active' : ''}`}>
+    <div className={`sidebar ${isSidebarOpen ? "active" : ""}`}>
       <div className="menu-btn" onClick={toggleSidebar}>
         <i className="ph-bold ph-caret-left"></i>
       </div>
@@ -34,8 +34,8 @@ const Sidebar = () => {
       <div className="nav">
         <Menu
           title="Products"
-          isActive={activeMenu === 'Products'}
-          onMenuItemClick={() => handleMenuItemClick('Products')}
+          isActive={activeMenu === "Products"}
+          onMenuItemClick={() => handleMenuItemClick("Products")}
         >
           <MenuItem icon="ph-bold ph-house-simple" text="Dashboard" />
           <MenuItem icon="ph-bold ph-user" text="Viewers">
@@ -79,10 +79,10 @@ export default Sidebar;
 
 // Helper components
 const Menu = ({ title, isActive, onMenuItemClick, children }) => (
-  <div className={`menu ${isActive ? 'active' : ''}`}>
-       <Link to="#">
-        <span className="text">{title}</span>
-      </Link>
+  <div className={`menu ${isActive ? "active" : ""}`}>
+    <Link to="#">
+      <span className="text">{title}</span>
+    </Link>
     <p className="title" onClick={onMenuItemClick}>
       {title}
     </p>

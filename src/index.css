@@ -164,7 +164,6 @@
   max-height: 10em;
 }
 
-
 /* Add this custom class to your tailwind config under extend > backgroundImage */
 .four_zero_four_bg {
   @apply bg-[url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif')] h-96 bg-center bg-no-repeat bg-cover;

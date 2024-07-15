@@ -33,7 +33,7 @@ const App = () => {
         setScreenSize({
           height: window.innerHeight,
           width: window.innerWidth,
-        })
+        }),
       );
     };
 
@@ -50,7 +50,14 @@ const App = () => {
       case "USER":
         return (
           <Routes>
-            <Route path="/" element={<ProtectedRoute role="USER"><Home /></ProtectedRoute>} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute role="USER">
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/login" element={<UserLogin />} />
             <Route path="/register" element={<UserSignup />} />
             <Route path="/about" element={<About />} />
@@ -61,7 +68,10 @@ const App = () => {
             <Route path="/product/:id" element={<Shop />} />
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/my-orders" element={<h1>My Orders Page</h1>} />
-            <Route path="/terms-and-conditions" element={<h1>Terms and Conditions</h1>} />
+            <Route
+              path="/terms-and-conditions"
+              element={<h1>Terms and Conditions</h1>}
+            />
             <Route path="/seller/register" element={<SellerSignup />} />
             <Route path="/seller/login" element={<h1>Seller Login</h1>} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -73,18 +83,39 @@ const App = () => {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         );
-        case "SELLER":
-          return (
-            <Routes>
-            <Route path="/seller/dashboard" element={<ProtectedRoute role="SELLER"><AdminPanel /></ProtectedRoute>} />
-            <Route path="/seller/dashboard" element={<ProtectedRoute role="SELLER"><h1>Seller Dashboard</h1></ProtectedRoute>} />
+      case "SELLER":
+        return (
+          <Routes>
+            <Route
+              path="/seller/dashboard"
+              element={
+                <ProtectedRoute role="SELLER">
+                  <AdminPanel />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/seller/dashboard"
+              element={
+                <ProtectedRoute role="SELLER">
+                  <h1>Seller Dashboard</h1>
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         );
       case "ADMIN":
         return (
           <Routes>
-            <Route path="/admin/dashboard" element={<ProtectedRoute role="ADMIN"><SellerDashboard /></ProtectedRoute>} />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute role="ADMIN">
+                  <SellerDashboard />
+                </ProtectedRoute>
+              }
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         );
@@ -99,9 +130,7 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
-        {renderRoutesForRole(userRole)}
-      </BrowserRouter>
+      <BrowserRouter>{renderRoutesForRole(userRole)}</BrowserRouter>
       <Toaster />
     </>
   );

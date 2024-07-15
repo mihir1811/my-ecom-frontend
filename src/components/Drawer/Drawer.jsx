@@ -61,7 +61,7 @@ const Drawer = ({
           style={{ padding: "10px" }}
           onClick={onClose}
         >
-          <IoClose size={30}  color="#222" />
+          <IoClose size={30} color="#222" />
         </motion.button>
 
         <div style={{ borderTop: "1px solid #ddd" }}></div>

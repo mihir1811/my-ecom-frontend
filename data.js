@@ -223,10 +223,7 @@ export const data = {
   },
 };
 
-
-export const cart = [
-
-]
+export const cart = [];
 
 export const productsList = [
   {
