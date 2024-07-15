@@ -18,6 +18,8 @@ const uiSlice = createSlice({
       state.isLoading = action.payload;
     },
     setSideBarSmall(state, action) {
+
+      console.log(action.payload ,"rfefefef")
       state.isSideBarSmall = action.payload;
     },
     setSelectedTab(state, action) {

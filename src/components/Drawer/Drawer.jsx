@@ -56,11 +56,12 @@ const Drawer = ({
         className="sidebar"
       >
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          // whileHover={{ scale: 1.1 }}
+          // whileTap={{ scale: 0.9 }}
           style={{ padding: "10px" }}
+          onClick={onClose}
         >
-          <IoClose size={30} onClick={onClose} color="#222" />
+          <IoClose size={30}  color="#222" />
         </motion.button>
 
         <div style={{ borderTop: "1px solid #ddd" }}></div>

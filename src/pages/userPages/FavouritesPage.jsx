@@ -85,9 +85,9 @@ const FavouritesPage = () => {
     <>
       <div className="bg-[#f5f5f5]">
         <Header />
-        <div className="mx-auto max-w-[1340px] px-[20px]">
+        <div className="mx-auto max-w-[1340px] px-[10px]">
           <div className="flex my-5">
-            <div className="w-full ps-5">
+            <div className="w-full">
               <div className="b h-full rounded-[10px] w-full p-3 pt-0">
                 <ProductContainer
                   filters={filters}

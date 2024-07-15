@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { setScreenSize } from "./redux/reducers/uiSlice";
 
@@ -10,6 +10,7 @@ import Contact from "./pages/userPages/Contact";
 import PageNotFound from "./pages/userPages/PageNotFound";
 import UserLogin from "./pages/userPages/authPages/UserLogin";
 import UserSignup from "./pages/userPages/authPages/UserSignup";
+import UserProfile from "./pages/userPages/UserProfile";
 import SellerDashboard from "./pages/sellerPages/SellerDashboard";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
 import "./App.css";
@@ -18,9 +19,13 @@ import CheckOutPage from "./pages/userPages/CheckOutPage";
 import useRole from "./hooks/userRole";
 import Shop from "./pages/userPages/Shop";
 import FavouritesPage from "./pages/userPages/FavouritesPage";
+import Sidebar from "./pages/sellerPages/SellerDashboard2";
+import AdminPanel from "./pages/sellerPages/GptDashboard";
+import MyOrders from "./pages/userPages/MyOrders";
 
 const App = () => {
   const dispatch = useDispatch();
+  const userRole = useSelector((data) => data?.userData?.userRole);
 
   useEffect(() => {
     const handleResize = () => {
@@ -28,7 +33,7 @@ const App = () => {
         setScreenSize({
           height: window.innerHeight,
           width: window.innerWidth,
-        }),
+        })
       );
     };
 
@@ -40,54 +45,62 @@ const App = () => {
     };
   }, [dispatch]);
 
+  const renderRoutesForRole = (role) => {
+    switch (role) {
+      case "USER":
+        return (
+          <Routes>
+            <Route path="/" element={<ProtectedRoute role="USER"><Home /></ProtectedRoute>} />
+            <Route path="/login" element={<UserLogin />} />
+            <Route path="/register" element={<UserSignup />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="/checkout" element={<CheckOutPage />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/product/:id" element={<Shop />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/my-orders" element={<h1>My Orders Page</h1>} />
+            <Route path="/terms-and-conditions" element={<h1>Terms and Conditions</h1>} />
+            <Route path="/seller/register" element={<SellerSignup />} />
+            <Route path="/seller/login" element={<h1>Seller Login</h1>} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/seller/products/list" element={<ProductList />} />
+            <Route path="/products/add" element={<AddProduct />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/user/profile" element={<UserProfile />} />
+            <Route path="/user/orders" element={<MyOrders />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        );
+        case "SELLER":
+          return (
+            <Routes>
+            <Route path="/seller/dashboard" element={<ProtectedRoute role="SELLER"><AdminPanel /></ProtectedRoute>} />
+            <Route path="/seller/dashboard" element={<ProtectedRoute role="SELLER"><h1>Seller Dashboard</h1></ProtectedRoute>} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        );
+      case "ADMIN":
+        return (
+          <Routes>
+            <Route path="/admin/dashboard" element={<ProtectedRoute role="ADMIN"><SellerDashboard /></ProtectedRoute>} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        );
+      default:
+        return (
+          <Routes>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        );
+    }
+  };
+
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute role="USER">
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/login" element={<UserLogin />} />
-          <Route path="/register" element={<UserSignup />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favourites" element={<FavouritesPage />} />
-          <Route path="/checkout" element={<CheckOutPage />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<Shop />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/my-orders" element={<h1>my orders page</h1>} />
-          <Route
-            path="/terms-and-conditions"
-            element={<h1>Terms and Conditions</h1>}
-          />
-          {/* Seller routes */}
-          <Route path="/seller/register" element={<SellerSignup />} />
-          <Route path="/seller/login" element={<h1>Seller Login</h1>} />
-          <Route
-            path="/seller/dashboard"
-            element={
-              <ProtectedRoute role="SELLER">
-                <SellerDashboard />
-              </ProtectedRoute>
-            }
-          />
-          {/* Admin routes */}
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute role="ADMIN">
-                <SellerDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        {renderRoutesForRole(userRole)}
       </BrowserRouter>
       <Toaster />
     </>
@@ -100,3 +113,9 @@ const ProtectedRoute = ({ children, role }) => {
   const hasRole = useRole(role);
   return hasRole ? children : <PageNotFound />;
 };
+
+const Dashboard = () => <div>Dashboard Content</div>;
+const ProductList = () => <div>Product List Content</div>;
+const AddProduct = () => <div>Add Product Content</div>;
+const Orders = () => <div>Orders Content</div>;
+const Profile = () => <div>Profile Content</div>;

@@ -173,8 +173,11 @@ const Header = () => {
                         transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                         className="absolute z-10 origin-top-right right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-200"
                       >
-                        <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                        <li onClick={()=>navigate("/user/profile")} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
                           Profile
+                        </li>
+                        <li onClick={()=>navigate("/user/orders")} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
+                          My Orders
                         </li>
                         <li className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white rounded-md">
                           Setting
@@ -230,6 +233,7 @@ const Header = () => {
                   src="https://cdn.trulyfreehome.com/ScentedLaundryWashJugRefill.jpg"
                   alt=""
                   className="w-[120px] rounded-md"
+                  onClick={() => setIsCartOpen(false)}
                 />
               </div>
               <div className="ms-3">

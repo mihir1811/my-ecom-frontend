@@ -55,7 +55,7 @@ const ProductContainer = ({ filters, products, isFavouritesPage = false }) => {
 
   return (
     <div
-      className={`productList ${isFavouritesPage ? "sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" : "sm:grid-cols-3"} grid grid-cols-2 gap-3 gap-y-4`}
+      className={`productList ${isFavouritesPage ? "sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" : "sm:grid-cols-4"} grid grid-cols-2 gap-3 gap-y-4`}
     >
       {filteredProducts.map((data, index) => (
         <div key={index} className="productCard bg-white relative group">

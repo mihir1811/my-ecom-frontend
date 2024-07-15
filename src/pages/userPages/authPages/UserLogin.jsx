@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { API_URL } from "../../../../config";
+import { API_BASE_URL } from "../../../../config";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { updateLoginStatus } from "../../../redux/reducers/userslice";
@@ -24,7 +24,7 @@ const UserLogin = () => {
   const handleLogin = async (data) => {
     console.log(data);
     try {
-      const res = await axios.post(`${API_URL}/auth/login`, {
+      const res = await axios.post(`${API_BASE_URL}/auth/login`, {
         ...data,
         userRole: "USER",
       });

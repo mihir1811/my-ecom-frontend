@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API_URL } from "../../../../config";
+import { API_BASE_URL } from "../../../../config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import LOGO from "../../../assets/logo.png";
@@ -26,7 +26,7 @@ const UserSignup = () => {
 
   const handleSignUp = async (data) => {
     try {
-      const res = await axios.post(`${API_URL}/auth/register`, {
+      const res = await axios.post(`${API_BASE_URL}/auth/register`, {
         ...data,
         userRole: "USER",
       }); // Changed to signup endpoint

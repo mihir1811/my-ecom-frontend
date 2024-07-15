@@ -96,25 +96,88 @@
   /* position:absolute ; */
   /* left:0% ; */
   bottom: 6px;
-  border: none;
-  background-color: #f5f5f5;
+  /* border: none; */
+  /* background-color: #f5f5f5; */
   color: black;
   /* border-radius:0px 0px 48px 48px ; */
   width: 250px;
   transition: all 0.5s ease-in-out;
   z-index: 501;
+  transform: translateX(0%);
 }
 
 .closeBar {
-  /* position:absolute ; */
-  left: -100%;
-  /* margin-bottom:-24px ; */
-  /* bottom:0 ; */
-  border: none;
-  background-color: #22262c;
-  color: white;
+  position: relative;
+  /* border: none; */
+
   /* border-radius:48px 48px 0px 0px ; */
   /* width:50px; */
   transition: all 0.5s ease-in-out;
-  z-index: 501;
+  /* transform: translateX(-100%); */
+  width: 60px;
+
+  /* z-index: 501; */
+}
+
+/* sidebar css  */
+.dropdown {
+  position: relative;
+  overflow: hidden;
+}
+@media screen and (max-width: 62em) {
+  .dropdown {
+    overflow: visible;
+  }
+}
+.dropdown__list {
+  --primary-btn_bd-cr: white;
+  --primary-btn_cr: var(--gray-9);
+  --primary-btn_bd-cr_hov: #f2f2f2;
+  --primary-btn_wh: 100%;
+  --primary-btn_pg-ie: 2em;
+  width: 100%;
+  max-height: 0;
+  transition: 180ms ease-in;
+  opacity: 0;
+  visibility: hidden;
+  list-style: none;
+  border: 3px solid var(--purple-7);
+}
+@media screen and (max-width: 62em) {
+  .dropdown__list {
+    /* position: absolute; */
+    /* overflow: hidden; */
+    border: 2px solid var(--purple-7);
+    border-top: 0;
+    border-radius: 0 0 var(--radius-2) var(--radius-2);
+  }
+}
+.dropdown__btn {
+  --primary-btn_wh: 100%;
+}
+.dropdown__btn.active:focus {
+  background-color: var(--purple-7);
+}
+.dropdown__list.active {
+  opacity: 1;
+  visibility: visible;
+  max-height: 10em;
+}
+
+
+/* Add this custom class to your tailwind config under extend > backgroundImage */
+.four_zero_four_bg {
+  @apply bg-[url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif')] h-96 bg-center bg-no-repeat bg-cover;
+}
+
+.page_404 {
+  @apply py-10 bg-white font-serif;
+}
+
+.content_box_404 {
+  @apply mt-[-50px];
+}
+
+.link_404 {
+  @apply text-white py-2 px-4 bg-green-600 mt-5 inline-block;
 }

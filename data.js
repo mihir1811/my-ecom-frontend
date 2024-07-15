@@ -13,7 +13,7 @@ export const data = {
     },
     profilePic:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-xnGLZJFli6FRyXSlm8-QnpJb9hh30HffEA&s",
-    userRole: "SELLER",
+    userRole: "USER",
   },
   products: [
     {
@@ -222,6 +222,11 @@ export const data = {
     ],
   },
 };
+
+
+export const cart = [
+
+]
 
 export const productsList = [
   {
