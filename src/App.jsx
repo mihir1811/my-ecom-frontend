@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { setScreenSize } from "./redux/reducers/uiSlice";
-
 import Home from "./pages/userPages/Home";
 import About from "./pages/userPages/About";
 import Contact from "./pages/userPages/Contact";
@@ -11,7 +10,6 @@ import PageNotFound from "./pages/userPages/PageNotFound";
 import UserLogin from "./pages/userPages/authPages/UserLogin";
 import UserSignup from "./pages/userPages/authPages/UserSignup";
 import UserProfile from "./pages/userPages/UserProfile";
-import SellerDashboard from "./pages/sellerPages/SellerDashboard";
 import SellerSignup from "./pages/sellerPages/SellerLogin";
 import "./App.css";
 import CartPage from "./pages/userPages/CartPage";
@@ -19,9 +17,8 @@ import CheckOutPage from "./pages/userPages/CheckOutPage";
 import useRole from "./hooks/userRole";
 import Shop from "./pages/userPages/Shop";
 import FavouritesPage from "./pages/userPages/FavouritesPage";
-import Sidebar from "./pages/sellerPages/SellerDashboard2";
-import AdminPanel from "./pages/sellerPages/GptDashboard";
 import MyOrders from "./pages/userPages/MyOrders";
+import AdminSideBar from "./components/SellerComponents/AdminSidebar/AdminSidebar";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,7 +30,7 @@ const App = () => {
         setScreenSize({
           height: window.innerHeight,
           width: window.innerWidth,
-        }),
+        })
       );
     };
 
@@ -72,11 +69,6 @@ const App = () => {
               path="/terms-and-conditions"
               element={<h1>Terms and Conditions</h1>}
             />
-            <Route path="/seller/register" element={<SellerSignup />} />
-            <Route path="/seller/login" element={<h1>Seller Login</h1>} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/seller/products/list" element={<ProductList />} />
-            <Route path="/products/add" element={<AddProduct />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/user/profile" element={<UserProfile />} />
             <Route path="/user/orders" element={<MyOrders />} />
@@ -85,25 +77,21 @@ const App = () => {
         );
       case "SELLER":
         return (
-          <Routes>
-            <Route
-              path="/seller/dashboard"
-              element={
-                <ProtectedRoute role="SELLER">
-                  <AdminPanel />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/seller/dashboard"
-              element={
-                <ProtectedRoute role="SELLER">
-                  <h1>Seller Dashboard</h1>
-                </ProtectedRoute>
-              }
-            />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+          <>
+            <AdminSideBar>
+              <Routes>
+                <Route path="/products/add" element={<AddProduct />} />
+                <Route path="/seller/register" element={<SellerSignup />} />
+                <Route path="/seller/login" element={<h1>Seller Login</h1>} />
+                <Route path="/seller/products" element={<h1>products page</h1>} />
+                <Route
+                  path="/seller/dashboard"
+                  element={<ProtectedRoute role="SELLER"></ProtectedRoute>}
+                />
+                <Route path="*" element={<PageNotFound />} />
+              </Routes>
+            </AdminSideBar>
+          </>
         );
       case "ADMIN":
         return (
@@ -112,7 +100,7 @@ const App = () => {
               path="/admin/dashboard"
               element={
                 <ProtectedRoute role="ADMIN">
-                  <SellerDashboard />
+                  <h1>hi</h1>
                 </ProtectedRoute>
               }
             />

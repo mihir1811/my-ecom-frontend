@@ -1,7 +1,7 @@
 import React from "react";
 
-const SellerDashboardWrapper = () => {
+const SellerThemeWrapper = () => {
   return <div>SellerDashboardWrapper</div>;
 };
 
-export default SellerDashboardWrapper;
+export default SellerThemeWrapper;

@@ -8,42 +8,42 @@ import { GoHeart, GoHeartFill } from "react-icons/go";
 
 const ProductContainer = ({ filters, products, isFavouritesPage = false }) => {
   const dispatch = useDispatch();
-  const favoriteProducts = useSelector((state) => state.favorites.favorites);
+  const favoriteProducts = useSelector((state) => state?.favorites?.favorites);
 
   const filteredProducts = products?.filter((product) => {
     return (
-      (filters.stoneType.length > 0
-        ? filters.stoneType.includes(product.stoneType)
+      (filters?.stoneType?.length > 0
+        ? filters?.stoneType.includes(product?.stoneType)
         : true) &&
       (filters.price
-        ? product.marketPrice >= filters.price[0] &&
-          product.marketPrice <= filters.price[1]
+        ? product?.marketPrice >= filters?.price[0] &&
+          product?.marketPrice <= filters?.price[1]
         : true) &&
-      (filters.shape.length > 0
-        ? filters.shape.includes(product.shape)
+      (filters?.shape?.length > 0
+        ? filters?.shape.includes(product?.shape)
         : true) &&
-      (filters.color.length > 0
-        ? filters.color.includes(product.color)
+      (filters?.color?.length > 0
+        ? filters?.color.includes(product?.color)
         : true) &&
-      (filters.weight
-        ? product.weight >= filters.weight[0] &&
-          product.weight <= filters.weight[1]
+      (filters?.weight
+        ? product?.weight >= filters?.weight[0] &&
+          product?.weight <= filters?.weight[1]
         : true) &&
-      (filters.cutGrade.length > 0
-        ? filters.cutGrade.includes(product.cut)
+      (filters?.cutGrade?.length > 0
+        ? filters?.cutGrade.includes(product?.cut)
         : true) &&
-      (filters.clarity.length > 0
-        ? filters.clarity.includes(product.clarity)
+      (filters?.clarity?.length > 0
+        ? filters?.clarity.includes(product?.clarity)
         : true) &&
-      (filters.fluorescence.length > 0
-        ? filters.fluorescence.includes(product.fluorescence)
+      (filters?.fluorescence?.length > 0
+        ? filters?.fluorescence.includes(product?.fluorescence)
         : true)
     );
   });
 
   const handleAddToFavorites = (product) => {
     const isFavorite = favoriteProducts.some(
-      (favProduct) => favProduct._id === product._id,
+      (favProduct) => favProduct?._id === product?._id,
     );
 
     if (isFavorite) {
@@ -70,7 +70,7 @@ const ProductContainer = ({ filters, products, isFavouritesPage = false }) => {
             onClick={() => handleAddToFavorites(data)}
           >
             {favoriteProducts.some(
-              (favProduct) => favProduct._id === data._id,
+              (favProduct) => favProduct?._id === data?._id,
             ) ? (
               <GoHeartFill size={20} color="red" />
             ) : (
