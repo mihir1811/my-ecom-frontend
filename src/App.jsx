@@ -30,7 +30,7 @@ const App = () => {
         setScreenSize({
           height: window.innerHeight,
           width: window.innerWidth,
-        })
+        }),
       );
     };
 
@@ -83,7 +83,10 @@ const App = () => {
                 <Route path="/products/add" element={<AddProduct />} />
                 <Route path="/seller/register" element={<SellerSignup />} />
                 <Route path="/seller/login" element={<h1>Seller Login</h1>} />
-                <Route path="/seller/products" element={<h1>products page</h1>} />
+                <Route
+                  path="/seller/products"
+                  element={<h1>products page</h1>}
+                />
                 <Route
                   path="/seller/dashboard"
                   element={<ProtectedRoute role="SELLER"></ProtectedRoute>}

@@ -9,6 +9,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AdminSidebarMenu from "./AdminSidebarmenu";
 import "./sidebar.css";
+import AdminProfileDropdown from "../AdminProfileDropdown";
 
 const routes = [
   {
@@ -150,7 +151,7 @@ const AdminSideBar = ({ children }) => {
               duration: 0.5,
               type: "tween",
               damping: 10,
-              stiffness:90
+              stiffness: 90,
             },
           }}
           className={`admin_sidebar `}
@@ -161,7 +162,7 @@ const AdminSideBar = ({ children }) => {
                 <motion.h1
                   variants={showAnimation}
                   initial="hidden"
-                  animate="show"
+                  animate="show"  
                   exit="hidden"
                   className="logo"
                 >
@@ -209,7 +210,7 @@ const AdminSideBar = ({ children }) => {
                 <NavLink
                   to={route.path}
                   key={index}
-                  className="link"
+                  className={`link`}
                   // activeClassName="active"
                 >
                   <div className="icon">{route.icon}</div>
@@ -232,8 +233,20 @@ const AdminSideBar = ({ children }) => {
           </section>
         </motion.div>
 
-        <main className="bg-[#f5f5f5] w-full">{children}</main>
+        <main className="bg-[#f5f5f5] w-full">
+          <div className="flex items-center justify-between px-[20px] py-3 border-b-2 shadow-sm">
+            <div>header</div>
+            <AdminProfileDropdown />
+          </div>
+          {children}
+        </main>
       </div>
+
+      <style jsx="true">
+        {`
+          
+        `}
+      </style>
     </>
   );
 };
