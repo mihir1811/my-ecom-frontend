@@ -10,6 +10,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import AdminSidebarMenu from "./AdminSidebarmenu";
 import "./sidebar.css";
 import AdminProfileDropdown from "../AdminProfileDropdown";
+import { RiDiscountPercentLine } from "react-icons/ri";
+import { TfiDropbox } from "react-icons/tfi";
 
 const routes = [
   {
@@ -62,7 +64,7 @@ const routes = [
   {
     path: "/seller/inventory",
     name: "Inventory",
-    icon: <BsCartCheck />,
+    icon: <TfiDropbox />,
   },
   {
     path: "/seller/analytics",
@@ -72,7 +74,7 @@ const routes = [
   {
     path: "/seller/discounts",
     name: "Discounts",
-    icon: <BiAnalyse />,
+    icon: <RiDiscountPercentLine />,
   },
   // {
   //   path: "/settings",
@@ -162,7 +164,7 @@ const AdminSideBar = ({ children }) => {
                 <motion.h1
                   variants={showAnimation}
                   initial="hidden"
-                  animate="show"  
+                  animate="show"
                   exit="hidden"
                   className="logo"
                 >
@@ -242,11 +244,7 @@ const AdminSideBar = ({ children }) => {
         </main>
       </div>
 
-      <style jsx="true">
-        {`
-          
-        `}
-      </style>
+      <style jsx="true">{``}</style>
     </>
   );
 };

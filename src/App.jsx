@@ -91,6 +91,36 @@ const App = () => {
                   path="/seller/dashboard"
                   element={<ProtectedRoute role="SELLER"></ProtectedRoute>}
                 />
+                <Route
+                  path="/seller/orders"
+                  element={
+                    <ProtectedRoute role="SELLER">orders page</ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/inventory"
+                  element={
+                    <ProtectedRoute role="SELLER">
+                      inventory page
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/analytics"
+                  element={
+                    <ProtectedRoute role="SELLER">
+                      analytics page
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/seller/discounts"
+                  element={
+                    <ProtectedRoute role="SELLER">
+                      discounts page
+                    </ProtectedRoute>
+                  }
+                />
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </AdminSideBar>
