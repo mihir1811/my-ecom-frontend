@@ -19,6 +19,13 @@ import Shop from "./pages/userPages/Shop";
 import FavouritesPage from "./pages/userPages/FavouritesPage";
 import MyOrders from "./pages/userPages/MyOrders";
 import AdminSideBar from "./components/SellerComponents/AdminSidebar/AdminSidebar";
+import SellerThemeWrapper from "./components/SellerComponents/SellerDashboardWrapper";
+import SellerProducts from "./pages/sellerPages/SellerProducts";
+import SellerDashboard from "./pages/sellerPages/SellerDashboard";
+import SellerOrders from "./pages/sellerPages/SellerOrders";
+import SellerInventory from "./pages/sellerPages/SellerInventory";
+import SellerAnalytics from "./pages/sellerPages/SellerAnalytics";
+import SellerDiscounts from "./pages/sellerPages/SellerDiscounts";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,7 +37,7 @@ const App = () => {
         setScreenSize({
           height: window.innerHeight,
           width: window.innerWidth,
-        }),
+        })
       );
     };
 
@@ -78,52 +85,79 @@ const App = () => {
       case "SELLER":
         return (
           <>
-            <AdminSideBar>
-              <Routes>
-                <Route path="/products/add" element={<AddProduct />} />
-                <Route path="/seller/register" element={<SellerSignup />} />
-                <Route path="/seller/login" element={<h1>Seller Login</h1>} />
-                <Route
-                  path="/seller/products"
-                  element={<h1>products page</h1>}
-                />
-                <Route
-                  path="/seller/dashboard"
-                  element={<ProtectedRoute role="SELLER"></ProtectedRoute>}
-                />
-                <Route
-                  path="/seller/orders"
-                  element={
-                    <ProtectedRoute role="SELLER">orders page</ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/seller/inventory"
-                  element={
-                    <ProtectedRoute role="SELLER">
-                      inventory page
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/seller/analytics"
-                  element={
-                    <ProtectedRoute role="SELLER">
-                      analytics page
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/seller/discounts"
-                  element={
-                    <ProtectedRoute role="SELLER">
-                      discounts page
-                    </ProtectedRoute>
-                  }
-                />
-                <Route path="*" element={<PageNotFound />} />
-              </Routes>
-            </AdminSideBar>
+            <Routes>
+              <Route
+                path="/products/add"
+                element={
+                  <SellerThemeWrapper>
+                    <AddProduct />
+                  </SellerThemeWrapper>
+                }
+              />
+              <Route path="/seller/register" element={<SellerSignup />} />
+              <Route path="/seller/login" element={<h1>Seller Login</h1>} />
+              <Route
+                path="/seller/products"
+                element={
+                  <ProtectedRoute role="SELLER">
+                    <SellerThemeWrapper>
+                      <SellerProducts />
+                    </SellerThemeWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/seller/dashboard"
+                element={
+                  <ProtectedRoute role="SELLER">
+                    <SellerThemeWrapper>
+                      <SellerDashboard />
+                    </SellerThemeWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/seller/orders"
+                element={
+                  <ProtectedRoute role="SELLER">
+                    <SellerThemeWrapper>
+                      <SellerOrders />
+                    </SellerThemeWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/seller/inventory"
+                element={
+                  <ProtectedRoute role="SELLER">
+                    <SellerThemeWrapper>
+                      <SellerInventory />
+                    </SellerThemeWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/seller/analytics"
+                element={
+                  <ProtectedRoute role="SELLER">
+                    <SellerThemeWrapper>
+                      <SellerAnalytics />
+                    </SellerThemeWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/seller/discounts"
+                element={
+                  <ProtectedRoute role="SELLER">
+                    <SellerThemeWrapper>
+                      <SellerDiscounts />
+                    </SellerThemeWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
           </>
         );
       case "ADMIN":
