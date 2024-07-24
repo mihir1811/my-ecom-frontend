@@ -10,7 +10,7 @@ import PageNotFound from "./pages/userPages/PageNotFound";
 import UserLogin from "./pages/userPages/authPages/UserLogin";
 import UserSignup from "./pages/userPages/authPages/UserSignup";
 import UserProfile from "./pages/userPages/UserProfile";
-import SellerSignup from "./pages/sellerPages/SellerLogin";
+import SellerSignup from "./pages/sellerPages/SellerSignup";
 import "./App.css";
 import CartPage from "./pages/userPages/CartPage";
 import CheckOutPage from "./pages/userPages/CheckOutPage";
@@ -37,7 +37,7 @@ const App = () => {
         setScreenSize({
           height: window.innerHeight,
           width: window.innerWidth,
-        })
+        }),
       );
     };
 
@@ -94,6 +94,7 @@ const App = () => {
                   </SellerThemeWrapper>
                 }
               />
+              <Route path="/register" element={<UserSignup />} />
               <Route path="/seller/register" element={<SellerSignup />} />
               <Route path="/seller/login" element={<h1>Seller Login</h1>} />
               <Route

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SellerOrders = () => {
-  return (
-    <div>SellerOrders</div>
-  )
-}
+  return <div className="p-5">SellerOrders</div>;
+};
 
-export default SellerOrders
+export default SellerOrders;

@@ -237,7 +237,7 @@ const AdminSideBar = ({ children }) => {
 
         <main className="bg-[#f5f5f5] w-full">
           <div className="flex items-center justify-between px-[20px] py-3 border-b-2 shadow-sm">
-            <div>header</div>
+            <div>Admin Panel</div>
             <AdminProfileDropdown />
           </div>
           {children}
