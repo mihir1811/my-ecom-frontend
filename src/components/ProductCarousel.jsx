@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -50,45 +50,33 @@ const diamondShapes = [
 ];
 
 const ProductCarousel = () => {
-  function SampleNextArrow(props) {
+  const [selectedShapes, setSelectedShapes] = useState([]);
+
+  const handleSelectShape = (title) => {
+    setSelectedShapes((prevSelectedShapes) =>
+      prevSelectedShapes.includes(title)
+        ? prevSelectedShapes.filter((shape) => shape !== title)
+        : [...prevSelectedShapes, title]
+    );
+  };
+
+  const SampleNextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
-      <div
-        className={className}
-        // aria-hidden="true"
-        // aria-disabled={currentSlide === 0 ? true : false}
-        // type="button"
-
-        style={{ ...style, display: "block" }}
-        onClick={onClick}
-      >
-        <motion.img
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          src={arrowNext}
-          height={30}
-        />
+      <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+        <motion.img whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} src={arrowNext} height={30} />
       </div>
     );
-  }
+  };
 
-  function SamplePrevArrow(props) {
+  const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
     return (
-      <div
-        className={className}
-        style={{ ...style, display: "block" }}
-        onClick={onClick}
-      >
-        <motion.img
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          src={ArrowPrev}
-          height={30}
-        />
+      <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+        <motion.img whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} src={ArrowPrev} height={30} />
       </div>
     );
-  }
+  };
 
   const settings = {
     infinite: true,
@@ -96,12 +84,7 @@ const ProductCarousel = () => {
     slidesToShow: 7,
     slidesToScroll: 1,
     className: "myCustomCarousel",
-    // centerMode: true,
-    // arrows:false,
-    // swipeToSlide: true,
-    // focusOnSelect: true,
     draggable: true,
-    // dots:true
     responsive: [
       {
         breakpoint: 1024,
@@ -126,6 +109,9 @@ const ProductCarousel = () => {
       },
     ],
   };
+
+
+  console.log(selectedShapes ,"EFewew")
   return (
     <>
       <div className="relative">
@@ -134,20 +120,19 @@ const ProductCarousel = () => {
             Diamonds
           </div>
         </div>
-        <Slider
-          {...settings}
-          nextArrow={<SampleNextArrow />}
-          prevArrow={<SamplePrevArrow />}
-        >
+        <Slider {...settings} nextArrow={<SampleNextArrow />} prevArrow={<SamplePrevArrow />}>
           {diamondShapes.map((data, index) => {
+            const isSelected = selectedShapes.includes(data.title);
             return (
               <div key={index}>
-                <div className="max-w-[178px] h-[282px] bg-white rounded-full flex justify-center items-center">
+                <div
+                  className={`max-w-[178px] h-[282px] bg-white rounded-full flex justify-center items-center ${
+                    isSelected ? "border-4 border-blue-300" : ""
+                  }`}
+                  onClick={() => handleSelectShape(data.title)}
+                >
                   <div className="p-4 text-center">
-                    <img
-                      src={data.img}
-                      className="removeBg scale-75 hover:scale-100 duration-150"
-                    />
+                    <img src={data.img} className="removeBg scale-75 hover:scale-100 duration-150" />
                     <h1>{data.title}</h1>
                   </div>
                 </div>
@@ -186,6 +171,9 @@ const ProductCarousel = () => {
 
           .slick-track {
             padding-top: 20px;
+          }
+          .border-blue-500 {
+            border-color: #3b82f6;
           }
         `}
       </style>

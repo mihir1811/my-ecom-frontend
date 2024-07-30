@@ -8,7 +8,7 @@ const DiamondFilters = () => {
   const [weightValue, setWeightValue] = useState(0);
   const [colorValue, setColourValue] = useState(0);
   const [selectedColors, setSelectedColors] = useState([]);
-  const [selectedShapes, setSelectedShapes] = useState([]);
+  // const [selectedShapes, setSelectedShapes] = useState([]);
   const [selectedStoneTypes, setSelectedStoneTypes] = useState([]);
   const [selectedCutGrades, setSelectedCutGrades] = useState([]);
   const [selectedClarities, setSelectedClarities] = useState([]);
@@ -121,12 +121,12 @@ const DiamondFilters = () => {
         </div>
       </div> */}
 
-      <FilterSelection
+      {/* <FilterSelection
         title="Stone Shape"
         shapes={["All", ...filterOptions.shapes]}
         selectedShapes={selectedShapes}
         setSelectedShapes={setSelectedShapes}
-      />
+      /> */}
       <FilterSelection
         title="Stone Type"
         shapes={["All", ...filterOptions.stoneTypes]}

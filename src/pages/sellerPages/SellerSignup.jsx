@@ -2,7 +2,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API_BASE_URL } from "../../../config";
 
 const SellerSignup = () => {
   const {
@@ -26,29 +25,17 @@ const SellerSignup = () => {
     },
   });
 
-  const handleSignUp = async (data) => {
-    try {
-      const res = await axios.post(`${API_BASE_URL}/auth/register`, {
-        ...data,
-        userRole: "SELLER",
-      }); // Changed to signup endpoint
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <a
           href="#"
           className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
         >
           Company name
         </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8 h-[400px] overflow-auto">
+        <div className="w-full  bg-white rounded-lg shadow dark:border xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8 overflow-auto max-w-[1200px] mx-auto">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create a Seller Account
             </h1>
@@ -95,7 +82,7 @@ const SellerSignup = () => {
                   {...register("phone", { required: true })}
                 />
                 {errors.phone && (
-                  <p className="text-red-500 text-sm">Email is required.</p>
+                  <p className="text-red-500 text-sm">phone is required.</p>
                 )}
               </div>
               <div>
@@ -103,7 +90,7 @@ const SellerSignup = () => {
                   htmlFor="address"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your Address
+                  Company Address
                 </label>
                 <input
                   type="text"
@@ -115,7 +102,7 @@ const SellerSignup = () => {
                   {...register("address", { required: true })}
                 />
                 {errors.address && (
-                  <p className="text-red-500 text-sm">Email is required.</p>
+                  <p className="text-red-500 text-sm">Company Address is required.</p>
                 )}
               </div>
               <div>
@@ -135,7 +122,7 @@ const SellerSignup = () => {
                   {...register("pinCode", { required: true })}
                 />
                 {errors.pinCode && (
-                  <p className="text-red-500 text-sm">Email is required.</p>
+                  <p className="text-red-500 text-sm">pin code is required.</p>
                 )}
               </div>
               <div>
@@ -155,7 +142,7 @@ const SellerSignup = () => {
                   {...register("firstName", { required: true })}
                 />
                 {errors.firstName && (
-                  <p className="text-red-500 text-sm">Email is required.</p>
+                  <p className="text-red-500 text-sm">first name is required.</p>
                 )}
               </div>
               <div>
@@ -175,7 +162,7 @@ const SellerSignup = () => {
                   {...register("lastName", { required: true })}
                 />
                 {errors.lastName && (
-                  <p className="text-red-500 text-sm">Email is required.</p>
+                  <p className="text-red-500 text-sm">last name is required.</p>
                 )}
               </div>
               <div>
@@ -195,7 +182,7 @@ const SellerSignup = () => {
                   {...register("companyName", { required: true })}
                 />
                 {errors.companyName && (
-                  <p className="text-red-500 text-sm">Email is required.</p>
+                  <p className="text-red-500 text-sm">company name is required.</p>
                 )}
               </div>
               <div>

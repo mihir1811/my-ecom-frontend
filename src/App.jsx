@@ -94,7 +94,6 @@ const App = () => {
                   </SellerThemeWrapper>
                 }
               />
-              <Route path="/register" element={<UserSignup />} />
               <Route path="/seller/register" element={<SellerSignup />} />
               <Route path="/seller/login" element={<h1>Seller Login</h1>} />
               <Route
@@ -168,7 +167,31 @@ const App = () => {
               path="/admin/dashboard"
               element={
                 <ProtectedRoute role="ADMIN">
-                  <h1>hi</h1>
+                  <h1>admin dashboard</h1>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute role="ADMIN">
+                  <h1>seller List</h1>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/sellers"
+              element={
+                <ProtectedRoute role="ADMIN">
+                  <h1>users list</h1>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/products"
+              element={
+                <ProtectedRoute role="ADMIN">
+                  <h1>products list</h1>
                 </ProtectedRoute>
               }
             />
@@ -186,7 +209,126 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>{renderRoutesForRole(userRole)}</BrowserRouter>
+      <BrowserRouter>
+        {/* {renderRoutesForRole(userRole)} */}
+        {/* user routes  */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home />
+            }
+          />
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/register" element={<UserSignup />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<Shop />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/my-orders" element={<h1>My Orders Page</h1>} />
+          <Route
+            path="/terms-and-conditions"
+            element={<h1>Terms and Conditions</h1>}
+          />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/user/profile" element={<UserProfile />} />
+          <Route path="/user/orders" element={<MyOrders />} />
+
+          {/* seller routes  */}
+          <Route
+            path="/products/add"
+            element={
+              <SellerThemeWrapper>
+                <AddProduct />
+              </SellerThemeWrapper>
+            }
+          />
+          <Route path="/seller/register" element={<SellerSignup />} />
+          <Route path="/seller/login" element={<h1>Seller Login</h1>} />
+          <Route
+            path="/seller/products"
+            element={
+              <SellerThemeWrapper>
+                <SellerProducts />
+              </SellerThemeWrapper>
+            }
+          />
+          <Route
+            path="/seller/dashboard"
+            element={
+              <SellerThemeWrapper>
+                <SellerDashboard />
+              </SellerThemeWrapper>
+            }
+          />
+          <Route
+            path="/seller/orders"
+            element={
+              <SellerThemeWrapper>
+                <SellerOrders />
+              </SellerThemeWrapper>
+            }
+          />
+          <Route
+            path="/seller/inventory"
+            element={
+              <SellerThemeWrapper>
+                <SellerInventory />
+              </SellerThemeWrapper>
+            }
+          />
+          <Route
+            path="/seller/analytics"
+            element={
+              <SellerThemeWrapper>
+                <SellerAnalytics />
+              </SellerThemeWrapper>
+            }
+          />
+          <Route
+            path="/seller/discounts"
+            element={
+              <SellerThemeWrapper>
+                <SellerDiscounts />
+              </SellerThemeWrapper>
+            }
+          />
+
+
+
+
+          {/* admin routes  */}
+          <Route
+            path="/admin/dashboard"
+            element={
+
+              <h1>admin dashboard</h1>
+
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <h1>seller List</h1>
+            }
+          />
+          <Route
+            path="/admin/sellers"
+            element={
+              <h1>users list</h1>
+            }
+          />
+          <Route
+            path="/admin/products"
+            element={
+              <h1>products list</h1>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
       <Toaster />
     </>
   );
